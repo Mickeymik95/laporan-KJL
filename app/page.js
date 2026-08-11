@@ -239,9 +239,6 @@ function handleEdit() {
     <h1 className="text-center text-lg font-black tracking-wide text-blue-300 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">
       📰 FORMAT LAPORAN 👮
     </h1>
-
-    {/* GARIS GLOW */}
-    <div className="mx-auto mt-2 h-px w-32 bg-gradient-to-r from-transparent via-blue-500/70 to-transparent" />
   </div>
 
 
@@ -297,7 +294,7 @@ function handleEdit() {
         {/* ZON */}
 
         <label className="mb-2 block text-xs font-black tracking-wide text-blue-300">
-          ZON
+          ZON ALIRAN
         </label>
 
         <select
@@ -357,25 +354,28 @@ function handleEdit() {
         </label>
 
         <select
-          value={selectedReport}
-          onChange={(e) => {
-            setSelectedReport(e.target.value);
-            setSavedData(null);
-            setEditOpen(false);
-          }}
-          disabled={!selectedStation}
-          className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3 text-sm font-bold text-white outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30 disabled:cursor-not-allowed disabled:opacity-40"
-        >
-          <option value="">
-            PILIH LAPORAN
-          </option>
+  value={selectedReport}
+  onChange={(e) => {
+    setSelectedReport(e.target.value);
+    setSavedData(null);
+    setEditOpen(false);
+  }}
+  disabled={!selectedStation}
+  className="w-full rounded-xl border border-cyan-400/50 bg-slate-800 p-3 text-sm font-bold text-cyan-200 outline-none transition shadow-[0_0_10px_rgba(34,211,238,0.10)] focus:border-cyan-300 focus:ring-2 focus:ring-cyan-400/30 disabled:cursor-not-allowed disabled:opacity-40"
+>
+  <option value="">
+    PILIH LAPORAN
+  </option>
 
-          {reports.map((report) => (
-            <option key={report.id} value={report.id}>
-              {report.name}
-            </option>
-          ))}
-        </select>
+  {reports.map((report) => (
+    <option
+      key={report.id}
+      value={report.id}
+    >
+      {report.name}
+    </option>
+  ))}
+</select>
 
       </section>
 

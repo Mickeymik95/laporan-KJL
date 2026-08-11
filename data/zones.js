@@ -48,8 +48,7 @@ export const zones = [
     id: "zon4",
     name: "ZON 4",
     stations: [
-      "KELANA JAYA",
-      "LEMBah SUBANG",
+      "LEMBAH SUBANG",
       "ARA DAMANSARA",
     ],
   },
