@@ -49,9 +49,9 @@ Laporan penugasan anggota bertugas Aliran Kelana Jaya Jabatan Sekuriti.
 TARIKH : ${tarikh}
 MASA : ${masa}
 TUGASAN : PERIKSA KEMASUKAN KONTRAKTOR
-LOKASI : STESEN LRT ${station} (KJL)
+LOKASI : STESEN LRT *${station}* (KJL)
 
-1. KEHADIRAN ${bilanganKontraktor}X KONTRAKTOR PEMBERSIHAN SYARIKAT ${syarikat?.toUpperCase() || ""} TUJUAN KERJA-KERJA CUCIAN STESEN.
+1. KEHADIRAN *${bilanganKontraktor}X* KONTRAKTOR PEMBERSIHAN SYARIKAT *${syarikat?.toUpperCase() || ""}* TUJUAN KERJA-KERJA CUCIAN STESEN.
 2. SEMAKAN PAS KONTRAKTOR SERTA WORK PERMIT MASIH DALAM TEMPOH SAH LAKU.
 3. TIADA SEBARANG PENYAMARAN / PERKARA MENCURIGAKAN, SEKIAN.
 ${tambahanList.length ? tambahanList.join("\n") + "\n" : ""}

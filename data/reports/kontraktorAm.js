@@ -61,13 +61,13 @@ Laporan penugasan anggota bertugas Aliran Kelana Jaya Jabatan Sekuriti.
 TARIKH : ${tarikh}
 MASA : ${masa}
 TUGASAN : PEMERIKSAAN KEMASUKAN KONTRAKTOR
-LOKASI : STESEN LRT ${station} (KJL)
+LOKASI : STESEN LRT *${station}* (KJL)
 
-1. LAPOR KEMASUKAN ${bilanganKontraktor}X KONTRAKTOR ${syarikat?.toUpperCase() || ""}.
-2. MASUK MEMBUAT KERJA-KERJA ${kerja?.toUpperCase() || ""}.
+1. LAPOR KEMASUKAN *${bilanganKontraktor}X* KONTRAKTOR *${syarikat?.toUpperCase() || ""}.*
+2. MASUK MEMBUAT KERJA-KERJA *${kerja?.toUpperCase() || ""}.*
 3. KESEMUA KONTRAKTOR MEMPUNYAI WORK PERMIT.
-4. ${statusPas?.toUpperCase() || ""}.
-5. KESEMUA KONTRAKTOR DIPANTAU OLEH STAFF BERTUGAS ${staff?.toUpperCase() || ""}.
+4. *${statusPas?.toUpperCase() || ""}.*
+5. KESEMUA KONTRAKTOR DIPANTAU OLEH STAFF BERTUGAS *${staff?.toUpperCase() || ""}.*
 6. LOKASI BAIK DAN DALAM KAWALAN.
 
 ANGGOTA BERTUGAS :
