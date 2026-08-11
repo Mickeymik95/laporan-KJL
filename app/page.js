@@ -132,12 +132,46 @@ async function handleCopy() {
     String(now.getMinutes()).padStart(2, "0") +
     "HRS";
 
+  // =========================================
+  // SEDIAKAN DATA FORM
+  // =========================================
+
+  const formData = {
+    ...(savedData || {}),
+  };
+
+  // =========================================
+  // MASUKKAN DEFAULT VALUE JIKA KOSONG
+  // =========================================
+
+  (reportData.fields || []).forEach((field) => {
+    const value = formData[field.name];
+
+    if (
+      value === undefined ||
+      value === null ||
+      value === ""
+    ) {
+      if (field.defaultValue !== undefined) {
+        formData[field.name] = field.defaultValue;
+      } else if (field.type === "checkbox") {
+        formData[field.name] = [];
+      } else {
+        formData[field.name] = "";
+      }
+    }
+  });
+
+  // =========================================
+  // BINA LAPORAN
+  // =========================================
+
   const laporan = reportData.build({
     anggota,
     station: selectedStation,
     tarikh,
     masa,
-    ...(savedData || {}),
+    ...formData,
   });
 
   try {
@@ -156,6 +190,9 @@ async function handleCopy() {
 }
 
 function handleEdit() {
+  console.log("REPORT:", reportData);
+  console.log("SAVED DATA:", savedData);
+
   if (!anggota.trim()) {
     alert("⚠️ Sila masukkan NAMA ANGGOTA.");
     return;

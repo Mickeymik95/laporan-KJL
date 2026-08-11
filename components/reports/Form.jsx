@@ -26,27 +26,7 @@ export default function Form({
     return initialData;
   }
 
-  const [formData, setFormData] = useState(() => {
-  const initialData = {};
-
-  (report?.fields || []).forEach((field) => {
-    if (savedData && savedData[field.name] !== undefined) {
-      initialData[field.name] = savedData[field.name];
-    } else if (field.defaultValue !== undefined) {
-      initialData[field.name] = field.defaultValue;
-    } else {
-      initialData[field.name] = "";
-    }
-  });
-
-  return initialData;
-});
-
-  /* =========================================
-     RESET FORM APABILA REPORT BERUBAH
-  ========================================= */
-
-  useEffect(() => {
+const [formData, setFormData] = useState(() => {
   const initialData = {};
 
   (report?.fields || []).forEach((field) => {
@@ -61,6 +41,44 @@ export default function Form({
     }
   });
 
+  return initialData;
+});
+
+  /* =========================================
+     RESET FORM APABILA REPORT BERUBAH
+  ========================================= */
+
+useEffect(() => {
+  const initialData = {};
+
+  (report?.fields || []).forEach((field) => {
+    const savedValue = savedData?.[field.name];
+
+    // Guna data lama hanya jika betul-betul ada isi
+    if (
+      savedValue !== undefined &&
+      savedValue !== null &&
+      savedValue !== ""
+    ) {
+      initialData[field.name] = savedValue;
+    }
+
+    // Kalau tiada data lama, guna defaultValue
+    else if (field.defaultValue !== undefined) {
+      initialData[field.name] = field.defaultValue;
+    }
+
+    // Checkbox
+    else if (field.type === "checkbox") {
+      initialData[field.name] = [];
+    }
+
+    // Field biasa
+    else {
+      initialData[field.name] = "";
+    }
+  });
+  
   setFormData(initialData);
 }, [report, savedData]);
 
