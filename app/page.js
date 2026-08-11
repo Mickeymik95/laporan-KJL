@@ -421,7 +421,7 @@ function handleEdit() {
 
       {/* FOOTER */}
 
-<footer className="mt-3 pb-2 pt-1 text-center">
+<footer className="mt-2 pb-2 pt-1 text-center">
 
   <p className="text-[10px] font-black tracking-wide text-slate-1000">
     SISTEM LAPORAN BY NAZMI_MIK
@@ -451,7 +451,7 @@ function handleEdit() {
       active:scale-95
     "
   >
-    💬 HUBUNGI SAYA
+    📞 ADUAN/CADANGAN 📱
   </a>
 
   <p className="mt-1 text-[8px] text-slate-1000">
