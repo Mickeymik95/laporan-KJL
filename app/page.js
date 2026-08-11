@@ -101,18 +101,19 @@ export default function Home() {
     });
 
     try {
-  await navigator.clipboard.writeText(laporan);
+      await navigator.clipboard.writeText(laporan);
 
-  const whatsappUrl =
-    "https://wa.me/?text=" + encodeURIComponent(laporan);
+      const whatsappUrl =
+        "https://wa.me/?text=" + encodeURIComponent(laporan);
 
-  window.open(whatsappUrl, "_blank");
+      window.open(whatsappUrl, "_blank");
+    } catch (error) {
+      console.error(error);
 
-} catch (error) {
-  console.error(error);
+      alert("❌ Gagal copy laporan");
+    }
+  }
 
-  alert("❌ Gagal copy laporan");
-}
   /* ==============================
      EDIT
   ============================== */
@@ -159,7 +160,7 @@ export default function Home() {
 
       {/* HEADER */}
 
-      <section className="relative overflow-hidden rounded-2xl border border-blue-500/40 bg-slate-950 p-4 shadow-[0_0_22px_rgba(59,130,246,0.15)]">
+      <section className="relative overflow-hidden rounded-2xl border border-blue-500/40 bg-slate-950 p-3 shadow-[0_0_22px_rgba(59,130,246,0.15)]">
 
         {/* GLOW */}
 
@@ -170,7 +171,7 @@ export default function Home() {
   {/* TAJUK */}
 
   <div className="relative">
-    <h1 className="text-center text-lg font-black tracking-wide text-blue-400 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">
+    <h1 className="text-center text-lg font-black tracking-wide text-blue-300 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">
       📰 FORMAT LAPORAN PENUGASAN 👮
     </h1>
 
@@ -391,4 +392,4 @@ export default function Home() {
 
     </main>
   );
-}
+};
