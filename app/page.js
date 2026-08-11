@@ -101,15 +101,18 @@ export default function Home() {
     });
 
     try {
-      await navigator.clipboard.writeText(laporan);
+  await navigator.clipboard.writeText(laporan);
 
-      alert("✅ LAPORAN TELAH DI COPY");
-    } catch (error) {
-      console.error(error);
+  const whatsappUrl =
+    "https://wa.me/?text=" + encodeURIComponent(laporan);
 
-      alert("❌ Gagal copy laporan");
-    }
-  }
+  window.open(whatsappUrl, "_blank");
+
+} catch (error) {
+  console.error(error);
+
+  alert("❌ Gagal copy laporan");
+}
   /* ==============================
      EDIT
   ============================== */
