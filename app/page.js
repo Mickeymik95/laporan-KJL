@@ -421,19 +421,45 @@ function handleEdit() {
 
       {/* FOOTER */}
 
-      <footer className="mt-3 pb-2 pt-1 text-center">
+<footer className="mt-3 pb-2 pt-1 text-center">
 
-        <div className="mx-auto mb-2 h-px w-24 bg-blue-500/20" />
+  <p className="text-[10px] font-black tracking-wide text-slate-1000">
+    SISTEM LAPORAN BY NAZMI_MIK
+  </p>
 
-        <p className="text-[10px] font-black tracking-wide text-slate-600">
-          SISTEM LAPORAN BY NAZMI
-        </p>
+  <a
+    href="https://wa.me/60149236577"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="
+      mt-1
+      inline-flex
+      items-center
+      gap-1
+      rounded-lg
+      border
+      border-green-500/30
+      bg-green-600/10
+      px-8
+      py-1.5
+      text-[9px]
+      font-black
+      text-green-400
+      transition
+      hover:bg-green-600/20
+      hover:text-green-300
+      active:scale-95
+    "
+  >
+    💬 HUBUNGI SAYA
+  </a>
 
-        <p className="mt-1 text-[8px] text-slate-700">
-          © 2026 SISTEM LAPORAN. ALL RIGHTS RESERVED.
-        </p>
+  <p className="mt-1 text-[8px] text-slate-1000">
+    © 2026 SISTEM LAPORAN. ALL RIGHTS RESERVED.
+  </p>
 
-      </footer>
+</footer>
+
 
       {/* FLOATING EDIT MODAL */}
 
