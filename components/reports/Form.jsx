@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Form({
   report,
@@ -9,17 +9,37 @@ export default function Form({
   onClose,
   onSave,
 }) {
-const [formData, setFormData] = useState(() => {
-  const initialData = {};
+  function getInitialData() {
+    const initialData = {};
 
-  (report?.fields || []).forEach((field) => {
-    if (field.defaultValue !== undefined) {
-      initialData[field.name] = field.defaultValue;
-    }
-  });
+    (report?.fields || []).forEach((field) => {
+      if (field.defaultValue !== undefined) {
+        initialData[field.name] = field.defaultValue;
+      } else if (field.type === "checkbox") {
+        initialData[field.name] = [];
+      } else {
+        initialData[field.name] = "";
+      }
+    });
 
-  return initialData;
-});
+    return initialData;
+  }
+
+  const [formData, setFormData] = useState(
+    getInitialData
+  );
+
+  /* =========================================
+     RESET FORM APABILA REPORT BERUBAH
+  ========================================= */
+
+  useEffect(() => {
+    setFormData(getInitialData());
+  }, [report]);
+
+  /* =========================================
+     CHANGE VALUE
+  ========================================= */
 
   function handleChange(name, value) {
     setFormData((prev) => ({
@@ -28,150 +48,241 @@ const [formData, setFormData] = useState(() => {
     }));
   }
 
+  /* =========================================
+     SIMPAN
+  ========================================= */
+
   function handleSubmit() {
     if (onSave) {
       onSave(formData);
     }
   }
 
-  function renderField(field) {
-    const value = formData[field.name] || "";
+  /* =========================================
+     RENDER FIELD
+  ========================================= */
 
-    /* ==============================
+  function renderField(field) {
+    const value =
+      formData[field.name] !== undefined
+        ? formData[field.name]
+        : "";
+
+    /* =====================================
        TEXTAREA
-    ============================== */
+    ===================================== */
+
     if (field.type === "textarea") {
       return (
         <textarea
           value={value}
           onChange={(e) =>
-            handleChange(field.name, e.target.value)
+            handleChange(
+              field.name,
+              e.target.value
+            )
           }
-          placeholder={field.placeholder || ""}
+          placeholder={
+            field.placeholder || ""
+          }
           rows={4}
-          className="w-full resize-none rounded-lg border border-slate-700 bg-slate-900 p-2 text-[11px] text-white outline-none transition placeholder:text-slate-600 focus:border-blue-400 focus:ring-1 focus:ring-blue-400/30"
+          className="
+            w-full
+            resize-none
+            rounded-lg
+            border
+            border-slate-700
+            bg-slate-900
+            p-2
+            text-[11px]
+            font-bold
+            text-white
+            outline-none
+            transition
+            placeholder:text-slate-600
+            focus:border-blue-400
+            focus:ring-1
+            focus:ring-blue-400/30
+          "
         />
       );
     }
 
-    /* ==============================
-       SELECT / DROPDOWN
-    ============================== */
+    /* =====================================
+       SELECT
+    ===================================== */
+
     if (field.type === "select") {
       return (
         <select
           value={value}
           onChange={(e) =>
-            handleChange(field.name, e.target.value)
+            handleChange(
+              field.name,
+              e.target.value
+            )
           }
-          className="w-full rounded-lg border border-slate-700 bg-slate-900 p-2 text-[11px] font-bold text-white outline-none transition focus:border-blue-400 focus:ring-1 focus:ring-blue-400/30"
+          className="
+            w-full
+            rounded-lg
+            border
+            border-slate-700
+            bg-slate-900
+            p-2
+            text-[11px]
+            font-bold
+            text-white
+            outline-none
+            transition
+            focus:border-blue-400
+            focus:ring-1
+            focus:ring-blue-400/30
+          "
         >
           <option value="">
             {field.placeholder ||
-              "PILIH " + field.label}
+              `PILIH ${field.label}`}
           </option>
 
-          {(field.options || []).map((option, index) => (
-            <option
-              key={index}
-              value={option}
-            >
-              {option}
-            </option>
-          ))}
+          {(field.options || []).map(
+            (option, index) => (
+              <option
+                key={index}
+                value={option}
+              >
+                {option}
+              </option>
+            )
+          )}
         </select>
       );
     }
 
-    /* ==============================
+    /* =====================================
        RADIO
-    ============================== */
+    ===================================== */
+
     if (field.type === "radio") {
       return (
-        <div className="space-y-2 rounded-lg border border-slate-700 bg-slate-900 p-2">
-          {(field.options || []).map((option, index) => (
-            <label
-              key={index}
-              className="flex cursor-pointer items-center gap-2 text-[11px] font-bold text-slate-300"
-            >
-              <input
-                type="radio"
-                name={field.name}
-                value={option}
-                checked={value === option}
-                onChange={(e) =>
-                  handleChange(
-                    field.name,
-                    e.target.value
-                  )
-                }
-                className="accent-blue-500"
-              />
+        <div
+          className="
+            space-y-2
+            rounded-lg
+            border
+            border-slate-700
+            bg-slate-900
+            p-2
+          "
+        >
+          {(field.options || []).map(
+            (option, index) => (
+              <label
+                key={index}
+                className="
+                  flex
+                  cursor-pointer
+                  items-center
+                  gap-2
+                  text-[11px]
+                  font-bold
+                  text-slate-300
+                "
+              >
+                <input
+                  type="radio"
+                  name={field.name}
+                  value={option}
+                  checked={value === option}
+                  onChange={(e) =>
+                    handleChange(
+                      field.name,
+                      e.target.value
+                    )
+                  }
+                  className="accent-blue-500"
+                />
 
-              <span>{option}</span>
-            </label>
-          ))}
+                <span>{option}</span>
+              </label>
+            )
+          )}
         </div>
       );
     }
 
-    /* ==============================
+    /* =====================================
        CHECKBOX
-    ============================== */
+    ===================================== */
+
     if (field.type === "checkbox") {
       const checkedValues = Array.isArray(value)
         ? value
         : [];
 
       function toggleCheckbox(option) {
-        const exists =
-          checkedValues.includes(option);
-
-        let newValues;
-
-        if (exists) {
-          newValues = checkedValues.filter(
-            (item) => item !== option
+        if (checkedValues.includes(option)) {
+          handleChange(
+            field.name,
+            checkedValues.filter(
+              (item) => item !== option
+            )
           );
         } else {
-          newValues = [
-            ...checkedValues,
-            option,
-          ];
+          handleChange(
+            field.name,
+            [...checkedValues, option]
+          );
         }
-
-        handleChange(
-          field.name,
-          newValues
-        );
       }
 
       return (
-        <div className="space-y-2 rounded-lg border border-slate-700 bg-slate-900 p-2">
-          {(field.options || []).map((option, index) => (
-            <label
-              key={index}
-              className="flex cursor-pointer items-center gap-2 text-[11px] font-bold text-slate-300"
-            >
-              <input
-                type="checkbox"
-                checked={checkedValues.includes(option)}
-                onChange={() =>
-                  toggleCheckbox(option)
-                }
-                className="accent-blue-500"
-              />
+        <div
+          className="
+            space-y-2
+            rounded-lg
+            border
+            border-slate-700
+            bg-slate-900
+            p-2
+          "
+        >
+          {(field.options || []).map(
+            (option, index) => (
+              <label
+                key={index}
+                className="
+                  flex
+                  cursor-pointer
+                  items-center
+                  gap-2
+                  text-[11px]
+                  font-bold
+                  text-slate-300
+                "
+              >
+                <input
+                  type="checkbox"
+                  checked={checkedValues.includes(
+                    option
+                  )}
+                  onChange={() =>
+                    toggleCheckbox(option)
+                  }
+                  className="accent-blue-500"
+                />
 
-              <span>{option}</span>
-            </label>
-          ))}
+                <span>{option}</span>
+              </label>
+            )
+          )}
         </div>
       );
     }
 
-    /* ==============================
+    /* =====================================
        DATE
-    ============================== */
+    ===================================== */
+
     if (field.type === "date") {
       return (
         <input
@@ -183,14 +294,27 @@ const [formData, setFormData] = useState(() => {
               e.target.value
             )
           }
-          className="w-full rounded-lg border border-slate-700 bg-slate-900 p-2 text-[11px] font-bold text-white outline-none focus:border-blue-400"
+          className="
+            w-full
+            rounded-lg
+            border
+            border-slate-700
+            bg-slate-900
+            p-2
+            text-[11px]
+            font-bold
+            text-white
+            outline-none
+            focus:border-blue-400
+          "
         />
       );
     }
 
-    /* ==============================
+    /* =====================================
        TIME
-    ============================== */
+    ===================================== */
+
     if (field.type === "time") {
       return (
         <input
@@ -202,14 +326,27 @@ const [formData, setFormData] = useState(() => {
               e.target.value
             )
           }
-          className="w-full rounded-lg border border-slate-700 bg-slate-900 p-2 text-[11px] font-bold text-white outline-none focus:border-blue-400"
+          className="
+            w-full
+            rounded-lg
+            border
+            border-slate-700
+            bg-slate-900
+            p-2
+            text-[11px]
+            font-bold
+            text-white
+            outline-none
+            focus:border-blue-400
+          "
         />
       );
     }
 
-    /* ==============================
+    /* =====================================
        NUMBER
-    ============================== */
+    ===================================== */
+
     if (field.type === "number") {
       return (
         <input
@@ -221,15 +358,33 @@ const [formData, setFormData] = useState(() => {
               e.target.value
             )
           }
-          placeholder={field.placeholder || ""}
-          className="w-full rounded-lg border border-slate-700 bg-slate-900 p-2 text-[11px] font-bold text-white outline-none placeholder:text-slate-600 focus:border-blue-400 focus:ring-1 focus:ring-blue-400/30"
+          placeholder={
+            field.placeholder || ""
+          }
+          className="
+            w-full
+            rounded-lg
+            border
+            border-slate-700
+            bg-slate-900
+            p-2
+            text-[11px]
+            font-bold
+            text-white
+            outline-none
+            placeholder:text-slate-600
+            focus:border-blue-400
+            focus:ring-1
+            focus:ring-blue-400/30
+          "
         />
       );
     }
 
-    /* ==============================
+    /* =====================================
        TEXT / DEFAULT
-    ============================== */
+    ===================================== */
+
     return (
       <input
         type="text"
@@ -240,56 +395,118 @@ const [formData, setFormData] = useState(() => {
             e.target.value
           )
         }
-        placeholder={field.placeholder || ""}
-        className="w-full rounded-lg border border-slate-700 bg-slate-900 p-2 text-[11px] font-bold text-white outline-none placeholder:text-slate-600 focus:border-blue-400 focus:ring-1 focus:ring-blue-400/30"
+        placeholder={
+          field.placeholder || ""
+        }
+        className="
+          w-full
+          rounded-lg
+          border
+          border-slate-700
+          bg-slate-900
+          p-2
+          text-[11px]
+          font-bold
+          text-white
+          outline-none
+          placeholder:text-slate-600
+          focus:border-blue-400
+          focus:ring-1
+          focus:ring-blue-400/30
+        "
       />
     );
   }
 
-return (
-  <div className="rounded-xl border border-blue-500/30 bg-slate-950 p-3 shadow-[0_0_15px_rgba(59,130,246,0.12)]">
+  /* =========================================
+     PAPARAN FORM
+  ========================================= */
 
-    {/* DYNAMIC FIELDS */}
-    <div>
-      {(report.fields || []).map((field) => (
-        <div
-          key={field.name}
-          className="mb-3"
+  return (
+    <div
+      className="
+        rounded-xl
+        border
+        border-blue-500/30
+        bg-slate-950
+        p-3
+        shadow-[0_0_15px_rgba(59,130,246,0.12)]
+      "
+    >
+      {/* DYNAMIC FIELDS */}
+
+      <div>
+        {(report?.fields || []).map(
+          (field) => (
+            <div
+              key={field.name}
+              className="mb-3"
+            >
+              <label
+                className="
+                  mb-1
+                  block
+                  text-[10px]
+                  font-bold
+                  tracking-wide
+                  text-slate-300
+                "
+              >
+                {field.label}
+              </label>
+
+              {renderField(field)}
+            </div>
+          )
+        )}
+      </div>
+
+      {/* BUTTON */}
+
+      <div className="mt-4 flex gap-2">
+        <button
+          type="button"
+          onClick={onClose}
+          className="
+            flex-1
+            rounded-lg
+            border
+            border-slate-600
+            bg-slate-700
+            p-2
+            text-[10px]
+            font-black
+            text-white
+            transition
+            hover:bg-slate-600
+            active:scale-95
+          "
         >
+          ✖ TUTUP
+        </button>
 
-          <label className="mb-1 block text-[10px] font-bold tracking-wide text-slate-300">
-            {field.label}
-          </label>
-
-          {renderField(field)}
-
-        </div>
-      ))}
+        <button
+          type="button"
+          onClick={handleSubmit}
+          className="
+            flex-1
+            rounded-lg
+            border
+            border-blue-400/30
+            bg-blue-600
+            p-2
+            text-[10px]
+            font-black
+            text-white
+            shadow-[0_0_12px_rgba(59,130,246,0.25)]
+            transition
+            hover:bg-blue-500
+            active:scale-95
+          "
+        >
+          💾 SIMPAN
+        </button>
+      </div>
     </div>
-
-
-    {/* BUTTON */}
-    <div className="mt-4 flex gap-2">
-
-      <button
-        type="button"
-        onClick={onClose}
-        className="flex-1 rounded-lg border border-slate-600 bg-slate-700 p-2 text-[10px] font-black text-white transition hover:bg-slate-600 active:scale-95"
-      >
-        ✖ TUTUP
-      </button>
-
-      <button
-        type="button"
-        onClick={handleSubmit}
-        className="flex-1 rounded-lg border border-blue-400/30 bg-blue-600 p-2 text-[10px] font-black text-white shadow-[0_0_12px_rgba(59,130,246,0.25)] transition hover:bg-blue-500 active:scale-95"
-      >
-        💾 SIMPAN
-      </button>
-
-    </div>
-
-  </div>
-);
-
+  );
 }
