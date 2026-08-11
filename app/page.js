@@ -172,7 +172,7 @@ export default function Home() {
 
   <div className="relative">
     <h1 className="text-center text-lg font-black tracking-wide text-blue-300 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">
-      📰 FORMAT LAPORAN PENUGASAN 👮
+      📰 FORMAT LAPORAN 👮
     </h1>
 
     {/* GARIS GLOW */}
