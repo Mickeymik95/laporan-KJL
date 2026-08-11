@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { zones } from "../data/zones";
 import { reports } from "../data/reports";
@@ -13,6 +14,8 @@ export default function Home() {
 
   const [editOpen, setEditOpen] = useState(false);
   const [savedData, setSavedData] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const storageKey = "laporanKJL";
 
   /* ==============================
      DATA ZON
@@ -21,8 +24,6 @@ export default function Home() {
   const zoneData = zones.find(
     (zone) => zone.id === selectedZone
   );
-
-
 
   const stations = zoneData?.stations || [];
 
@@ -34,150 +35,170 @@ export default function Home() {
     (report) => report.id === selectedReport
   );
 
-const storageKey =
-  selectedReport && selectedStation
-    ? `laporan_${selectedReport}_${selectedStation}`
-    : null;
-
-  useEffect(() => {
-  if (!storageKey) {
-    setSavedData(null);
-    return;
-  }
-
-  const saved = localStorage.getItem(storageKey);
-
-  if (saved) {
-    setSavedData(JSON.parse(saved));
-  } else {
-    setSavedData(null);
-  }
-}, [storageKey]);
+  /* ==============================
+     BACA LOCAL STORAGE
+  ============================== */
 
 useEffect(() => {
-  if (!storageKey) {
-    setSavedData(null);
-    return;
-  }
-
   const saved = localStorage.getItem(storageKey);
 
   if (saved) {
-    setSavedData(JSON.parse(saved));
-  } else {
-    setSavedData(null);
-  }
-}, [storageKey]);
+    try {
+      const data = JSON.parse(saved);
 
+      setAnggota(data.anggota || "");
+      setSelectedZone(data.selectedZone || "");
+      setSelectedStation(data.selectedStation || "");
+      setSelectedReport(data.selectedReport || "");
+      setSavedData(data.savedData || null);
+    } catch (error) {
+      console.error(
+        "Gagal membaca localStorage:",
+        error
+      );
+    }
+  }
+
+  setIsLoaded(true);
+}, []);
+  /* ==============================
+     AUTO SIMPAN LOCAL STORAGE
+  ============================== */
+
+useEffect(() => {
+  if (!isLoaded) return;
+
+  const data = {
+    anggota,
+    selectedZone,
+    selectedStation,
+    selectedReport,
+    savedData,
+  };
+
+  localStorage.setItem(
+    storageKey,
+    JSON.stringify(data)
+  );
+}, [
+  isLoaded,
+  anggota,
+  selectedZone,
+  selectedStation,
+  selectedReport,
+  savedData,
+]);
   /* ==============================
      SIMPAN FORM
   ============================== */
 
- function handleSave(data) {
-  setSavedData(data);
-  if (storageKey) {
-    localStorage.setItem(
-      storageKey,
-      JSON.stringify(data)
-    );
+  function handleSave(data) {
+    setSavedData(data);
+    setEditOpen(false);
   }
-  setEditOpen(false);
+
+async function handleCopy() {
+  if (!anggota.trim()) {
+    alert("⚠️ Sila masukkan NAMA ANGGOTA.");
+    return;
+  }
+
+  if (!selectedZone) {
+    alert("⚠️ Sila pilih ZON.");
+    return;
+  }
+
+  if (!selectedStation) {
+    alert("⚠️ Sila pilih STESEN.");
+    return;
+  }
+
+  if (!selectedReport) {
+    alert("⚠️ Sila pilih JENIS LAPORAN.");
+    return;
+  }
+
+  if (!reportData) {
+    alert("⚠️ Data laporan tidak dijumpai.");
+    return;
+  }
+
+  const now = new Date();
+
+  const tarikh = now.toLocaleDateString("en-GB");
+
+  const masa =
+    String(now.getHours()).padStart(2, "0") +
+    String(now.getMinutes()).padStart(2, "0") +
+    "HRS";
+
+  const laporan = reportData.build({
+    anggota,
+    station: selectedStation,
+    tarikh,
+    masa,
+    ...(savedData || {}),
+  });
+
+  try {
+    await navigator.clipboard.writeText(laporan);
+
+    const whatsappUrl =
+      "https://wa.me/?text=" +
+      encodeURIComponent(laporan);
+
+    window.open(whatsappUrl, "_blank");
+  } catch (error) {
+    console.error(error);
+
+    alert("❌ Gagal copy laporan");
+  }
 }
-  /* ==============================
-     VALIDATION
-  ============================== */
 
-  function validateForm() {
-    if (!anggota.trim()) {
-      alert("⚠️ Sila masukkan NAMA ANGGOTA.");
-      return false;
-    }
-
-    if (!selectedZone) {
-      alert("⚠️ Sila pilih ZON.");
-      return false;
-    }
-
-    if (!selectedStation) {
-      alert("⚠️ Sila pilih STESEN.");
-      return false;
-    }
-
-    if (!selectedReport) {
-      alert("⚠️ Sila pilih JENIS LAPORAN.");
-      return false;
-    }
-
-    if (!reportData) {
-      alert("⚠️ Data laporan tidak dijumpai.");
-      return false;
-    }
-
-    return true;
+function handleEdit() {
+  if (!anggota.trim()) {
+    alert("⚠️ Sila masukkan NAMA ANGGOTA.");
+    return;
   }
 
-  /* ==============================
-     COPY LAPORAN
-  ============================== */
-
-  async function handleCopy() {
-    if (!validateForm()) return;
-
-    const now = new Date();
-
-    const tarikh = now.toLocaleDateString("en-GB");
-
-    const masa =
-      String(now.getHours()).padStart(2, "0") +
-      String(now.getMinutes()).padStart(2, "0") +
-      "HRS";
-
-    const laporan = reportData.build({
-      anggota,
-      station: selectedStation,
-      tarikh,
-      masa,
-      ...(savedData || {}),
-    });
-
-    try {
-      await navigator.clipboard.writeText(laporan);
-
-      const whatsappUrl =
-        "https://wa.me/?text=" + encodeURIComponent(laporan);
-
-      window.open(whatsappUrl, "_blank");
-    } catch (error) {
-      console.error(error);
-
-      alert("❌ Gagal copy laporan");
-    }
+  if (!selectedZone) {
+    alert("⚠️ Sila pilih ZON.");
+    return;
   }
 
-  /* ==============================
-     EDIT
-  ============================== */
-
-  function handleEdit() {
-    if (!validateForm()) return;
-
-    setEditOpen(true);
+  if (!selectedStation) {
+    alert("⚠️ Sila pilih STESEN.");
+    return;
   }
 
+  if (!selectedReport) {
+    alert("⚠️ Sila pilih JENIS LAPORAN.");
+    return;
+  }
+
+  if (!reportData) {
+    alert("⚠️ Data laporan tidak dijumpai.");
+    return;
+  }
+
+  setEditOpen(true);
+}
   /* ==============================
      RESET
   ============================== */
 
   function handleReset() {
-  if (storageKey) {
+    setAnggota("");
+    setSelectedZone("");
+    setSelectedStation("");
+    setSelectedReport("");
+    setSavedData(null);
+    setEditOpen(false);
+
     localStorage.removeItem(storageKey);
+
+    alert("♻️ SEMUA DATA TELAH DI RESET");
   }
-
-  setSavedData(null);
-  setEditOpen(false);
-
-  alert("♻️ DATA EDIT TELAH DI RESET");
-} 
 
   function handleAnggotaKeyDown(e) {
     if (e.key === "Enter") {
@@ -304,7 +325,7 @@ useEffect(() => {
         {/* STESEN */}
 
         <label className="mb-2 mt-4 block text-xs font-black tracking-wide text-blue-300">
-          STESEN
+          STESEN HARI INI
         </label>
 
         <select
@@ -371,7 +392,7 @@ useEffect(() => {
             onClick={handleCopy}
             className="flex-1 rounded-xl border border-green-400/30 bg-green-600 p-3 text-xs font-black text-white shadow-[0_0_12px_rgba(34,197,94,0.20)] transition hover:bg-green-500 active:scale-95"
           >
-            📋 SEND COPY
+            📋SALIN & WSP
           </button>
 
           {/* EDIT */}
@@ -381,7 +402,7 @@ useEffect(() => {
             onClick={handleEdit}
             className="flex-1 rounded-xl border border-blue-400/30 bg-blue-600 p-3 text-xs font-black text-white shadow-[0_0_12px_rgba(59,130,246,0.20)] transition hover:bg-blue-500 active:scale-95"
           >
-            ✏️ EDIT
+            ✏️EDIT
           </button>
 
         </div>
@@ -393,7 +414,7 @@ useEffect(() => {
           onClick={handleReset}
           className="mt-3 w-full rounded-xl border border-red-500/30 bg-red-600/80 p-3 text-xs font-black text-white shadow-[0_0_12px_rgba(239,68,68,0.20)] transition hover:bg-red-500 active:scale-95"
         >
-          ♻️ RESET EDIT
+          ♻️ RESET SEMULA
         </button>
 
       </section>
@@ -436,4 +457,4 @@ useEffect(() => {
 
     </main>
   );
-};
+}
