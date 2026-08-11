@@ -1,6 +1,6 @@
 export const oku = {
   id: "oku",
-  name: "LAPORAN BANTUAN OKU",
+  name: "OKU",
 
   fields: [
     {

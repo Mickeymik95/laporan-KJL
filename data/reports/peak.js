@@ -1,6 +1,6 @@
 export const peak = {
   id: "peak",
-  name: "LAPORAN PEAK HOUR",
+  name: "PEAK HOUR / KRISIS",
 
   fields: [
     {
