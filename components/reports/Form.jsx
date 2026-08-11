@@ -6,6 +6,7 @@ export default function Form({
   report,
   station,
   anggota,
+  savedData,
   onClose,
   onSave,
 }) {
@@ -25,17 +26,43 @@ export default function Form({
     return initialData;
   }
 
-  const [formData, setFormData] = useState(
-    getInitialData
-  );
+  const [formData, setFormData] = useState(() => {
+  const initialData = {};
+
+  (report?.fields || []).forEach((field) => {
+    if (savedData && savedData[field.name] !== undefined) {
+      initialData[field.name] = savedData[field.name];
+    } else if (field.defaultValue !== undefined) {
+      initialData[field.name] = field.defaultValue;
+    } else {
+      initialData[field.name] = "";
+    }
+  });
+
+  return initialData;
+});
 
   /* =========================================
      RESET FORM APABILA REPORT BERUBAH
   ========================================= */
 
   useEffect(() => {
-    setFormData(getInitialData());
-  }, [report]);
+  const initialData = {};
+
+  (report?.fields || []).forEach((field) => {
+    if (savedData && savedData[field.name] !== undefined) {
+      initialData[field.name] = savedData[field.name];
+    } else if (field.defaultValue !== undefined) {
+      initialData[field.name] = field.defaultValue;
+    } else if (field.type === "checkbox") {
+      initialData[field.name] = [];
+    } else {
+      initialData[field.name] = "";
+    }
+  });
+
+  setFormData(initialData);
+}, [report, savedData]);
 
   /* =========================================
      CHANGE VALUE

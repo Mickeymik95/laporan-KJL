@@ -1,7 +1,5 @@
 "use client";
-
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import { zones } from "../data/zones";
 import { reports } from "../data/reports";
 import Form from "../components/reports/Form";
@@ -24,6 +22,8 @@ export default function Home() {
     (zone) => zone.id === selectedZone
   );
 
+
+
   const stations = zoneData?.stations || [];
 
   /* ==============================
@@ -34,15 +34,55 @@ export default function Home() {
     (report) => report.id === selectedReport
   );
 
+const storageKey =
+  selectedReport && selectedStation
+    ? `laporan_${selectedReport}_${selectedStation}`
+    : null;
+
+  useEffect(() => {
+  if (!storageKey) {
+    setSavedData(null);
+    return;
+  }
+
+  const saved = localStorage.getItem(storageKey);
+
+  if (saved) {
+    setSavedData(JSON.parse(saved));
+  } else {
+    setSavedData(null);
+  }
+}, [storageKey]);
+
+useEffect(() => {
+  if (!storageKey) {
+    setSavedData(null);
+    return;
+  }
+
+  const saved = localStorage.getItem(storageKey);
+
+  if (saved) {
+    setSavedData(JSON.parse(saved));
+  } else {
+    setSavedData(null);
+  }
+}, [storageKey]);
+
   /* ==============================
      SIMPAN FORM
   ============================== */
 
-  function handleSave(data) {
-    setSavedData(data);
-    setEditOpen(false);
+ function handleSave(data) {
+  setSavedData(data);
+  if (storageKey) {
+    localStorage.setItem(
+      storageKey,
+      JSON.stringify(data)
+    );
   }
-
+  setEditOpen(false);
+}
   /* ==============================
      VALIDATION
   ============================== */
@@ -129,11 +169,15 @@ export default function Home() {
   ============================== */
 
   function handleReset() {
-    setSavedData(null);
-    setEditOpen(false);
-
-    alert("♻️ EDIT TELAH DI RESET");
+  if (storageKey) {
+    localStorage.removeItem(storageKey);
   }
+
+  setSavedData(null);
+  setEditOpen(false);
+
+  alert("♻️ DATA EDIT TELAH DI RESET");
+} 
 
   function handleAnggotaKeyDown(e) {
     if (e.key === "Enter") {
@@ -378,13 +422,13 @@ export default function Home() {
           <div className="max-h-[92dvh] w-full max-w-md overflow-y-auto rounded-2xl border border-blue-500/30 bg-slate-950 p-4 shadow-[0_0_35px_rgba(59,130,246,0.30)]">
 
             <Form
-              report={reportData}
-              station={selectedStation}
-              anggota={anggota}
-              onClose={() => setEditOpen(false)}
-              onSave={handleSave}
-            />
-
+  report={reportData}
+  station={selectedStation}
+  anggota={anggota}
+  savedData={savedData}
+  onClose={() => setEditOpen(false)}
+  onSave={handleSave}
+/>
           </div>
 
         </div>
