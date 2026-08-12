@@ -9,7 +9,7 @@ export const laporanAwal = {
       type: "textarea",
       placeholder:
         "Masukkan makluman awal kejadian di sini. cth : 'Pada 01/01/26 jam sekitar......'",
-      rows: 15,
+      rows: 8,
     },
   ],
 

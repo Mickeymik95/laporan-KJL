@@ -23,6 +23,7 @@ export const cucian = {
       label: "LAPORAN TAMBAHAN (JIKA PERLU)",
       type: "textarea",
       placeholder: "Cth : 01 x KONTRAKTOR DIBERIKAN PAS SEMENTARA...",
+      rows: 8,
     },
   ],
 

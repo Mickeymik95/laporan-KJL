@@ -131,7 +131,7 @@ useEffect(() => {
           placeholder={
             field.placeholder || ""
           }
-          rows={4}
+          rows={field.rows || 4}
           className="
             w-full
             resize-none
@@ -528,7 +528,7 @@ useEffect(() => {
             active:scale-95
           "
         >
-          ✖ TUTUP
+          ❌ TUTUP
         </button>
 
         <button

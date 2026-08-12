@@ -7,7 +7,8 @@ const tamatOps = {
       name: "tambahan",
       label: "LAPORAN TAMBAHAN",
       type: "textarea",
-      placeholder: "Masukkan laporan tambahan jika ada..."
+      rows: 8,
+      placeholder: "Cth : 01 x Kontraktor sedang membuat cucian (akan masuk dalam no 4 laporan)"
     }
   ],
 

@@ -8,8 +8,9 @@ export const harian = {
       name: "tambahan",
       label: "LAPORAN TAMBAHAN",
       type: "textarea",
+      rows: 8,
       placeholder:
-        "Tambahan akan menjadi no 4, Enter akan menjadi no 5 & seterusnya",
+        "Tambahan akan masuk di no. 4 dalam laporan, Enter akan masuk di no. 5 & seterusnya",
     },
   ],
 
