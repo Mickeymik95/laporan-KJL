@@ -8,7 +8,7 @@ export const laporanAwal = {
       label: "BUTIRAN LAPORAN AWAL",
       type: "textarea",
       placeholder:
-        "Masukkan makluman awal kejadian di sini. cth : 'jam sekitar......'",
+        "Masukkan makluman awal kejadian di sini. cth : 'Pada 01/01/26 jam sekitar......'",
       rows: 15,
     },
   ],

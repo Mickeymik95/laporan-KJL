@@ -225,16 +225,13 @@ function handleEdit() {
   ============================== */
 
   function handleReset() {
-    setAnggota("");
-    setSelectedZone("");
-    setSelectedStation("");
     setSelectedReport("");
     setSavedData(null);
     setEditOpen(false);
-
+    setAnggota("");
     localStorage.removeItem(storageKey);
 
-    alert("♻️ SEMUA DATA TELAH DI RESET");
+    alert("♻️ SEMUA DATA TELAH DI RESET KECUALI ZON & STESEN ❗");
   }
 
   function handleAnggotaKeyDown(e) {
@@ -294,32 +291,6 @@ function handleEdit() {
   </div>
 
 
-  {/* NAMA ANGGOTA */}
-
-  <div className="mt-4">
-
-    <label className="mb-2 block text-xs font-black tracking-wide text-blue-300">
-      NAMA ANGGOTA
-    </label>
-
-    <div className="relative">
-
-      {/* GLOW INPUT */}
-      <div className="pointer-events-none absolute -inset-[1px] rounded-xl bg-gradient-to-r from-blue-500/20 via-cyan-400/30 to-blue-500/20 blur-sm" />
-
-      <textarea
-        value={anggota}
-        onChange={(e) => setAnggota(e.target.value)}
-        onKeyDown={handleAnggotaKeyDown}
-        placeholder="CTH : KONS PB ALI"
-        rows={1}
-        className="relative min-h-[50px] w-full resize-none rounded-xl border border-blue-500/30 bg-slate-900 px-3 py-3 text-sm font-bold leading-6 text-white outline-none placeholder:text-slate-600 transition focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30"
-      />
-
-    </div>
-
-  </div>
-
 </div>
 
       </section>
@@ -328,6 +299,27 @@ function handleEdit() {
 
       <section className="mt-4 rounded-2xl border border-slate-800 bg-slate-900 p-4 shadow-[0_0_16px_rgba(15,23,42,0.5)]">
 
+{/* NAMA ANGGOTA */}
+  <div >
+
+    <label className="mb-2 block text-xs font-black tracking-wide text-blue-300">
+      NAMA ANGGOTA
+    </label>
+
+    <div className="relative">
+
+      <textarea
+        value={anggota}
+        onChange={(e) => setAnggota(e.target.value)}
+        onKeyDown={handleAnggotaKeyDown}
+        placeholder="ENTER UNTUK TAMBAH ANGGOTA"
+        rows={1}
+        className="relative min-h-[50px] w-full resize-none rounded-xl border border-blue-500/30 bg-slate-900 px-3 py-3 text-sm font-bold leading-6 text-white outline-none placeholder:text-slate-600 transition focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30"
+      />
+
+    </div>
+
+  </div>
         {/* ZON */}
 
         <label className="mb-2 block text-xs font-black tracking-wide text-blue-300">
@@ -451,7 +443,7 @@ function handleEdit() {
           onClick={handleReset}
           className="mt-3 w-full rounded-xl border border-red-500/30 bg-red-600/80 p-3 text-xs font-black text-white shadow-[0_0_12px_rgba(239,68,68,0.20)] transition hover:bg-red-500 active:scale-95"
         >
-          ♻️ RESET SEMULA
+          ♻️ RESET DATA LAPORAN 🚮
         </button>
 
       </section>
@@ -460,37 +452,35 @@ function handleEdit() {
 
 <footer className="mt-2 pb-2 pt-1 text-center">
 
-  <p className="text-[10px] font-black tracking-wide text-slate-1000">
+  <p className="text-[9px] font-black tracking-wide text-slate-200">
     CREATED BY NAZMI_MIK
   </p>
 
   <a
-    href="https://wa.me/60149236577"
-    target="_blank"
-    rel="noopener noreferrer"
-    message="Assalamualaikum, saya {anggota} ingin memberikan cadangan untuk sistem laporan."
-    className="
-      mt-1
-      inline-flex
-      items-center
-      gap-1
-      rounded-lg
-      border
-      border-green-500/30
-      bg-green-1000
-      px-8
-      py-1.5
-      text-[9px]
-      font-black
-      text-green-400
-      transition
-      hover:bg-green-600/20
-      hover:text-green-300
-      active:scale-95
-    "
-  >
-  ☎️ KLIK UNTUK CADANGAN 📱
-  </a>
+  href={`https://wa.me/60149236577?text=${encodeURIComponent(
+    `Assalamualaikum, saya ${anggota} ingin memberikan cadangan untuk sistem laporan. `
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    mt-1
+    inline-flex
+    items-center
+    gap-1
+    rounded-lg
+    border
+    border-green-500/30
+    bg-green-1000
+    px-8
+    py-1.5
+    text-[9px]
+    font-black
+    text-green-500
+    active:scale-95
+  "
+>
+  ☎️📱KLIK UNTUK CADANGAN⚙️🔨
+</a>
 
   <p className="mt-1 text-[8px] text-slate-1000">
     © 2026 SISTEM LAPORAN. ALL RIGHTS RESERVED.
