@@ -99,7 +99,7 @@ useEffect(() => {
 
 async function handleCopy() {
   if (!anggota.trim()) {
-    alert("⚠️ Sila masukkan NAMA ANGGOTA.");
+    alert("⚠️ Sila masukkan JAWATAN & NAMA");
     return;
   }
 
@@ -234,26 +234,6 @@ function handleEdit() {
     alert("♻️ SEMUA DATA TELAH DI RESET KECUALI ZON & STESEN ❗");
   }
 
-  function handleAnggotaKeyDown(e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-
-      const value = e.currentTarget.value.trim();
-
-      if (!value) return;
-
-      setAnggota((prev) => {
-        if (!prev.trim()) {
-          return value;
-        }
-
-        return `${prev}\n${value}`;
-      });
-
-      e.currentTarget.value = "";
-    }
-  }
-
   return (
     <main className="mx-auto flex min-h-[100dvh] w-full max-w-md flex-col justify-center bg-slate-950 px-4 py-6 text-white">
 
@@ -303,19 +283,18 @@ function handleEdit() {
   <div >
 
     <label className="mb-2 block text-xs font-black tracking-wide text-blue-300">
-      NAMA ANGGOTA
+    JAWATAN & NAMA
     </label>
 
     <div className="relative">
 
       <textarea
-        value={anggota}
-        onChange={(e) => setAnggota(e.target.value)}
-        onKeyDown={handleAnggotaKeyDown}
-        placeholder="ENTER UNTUK TAMBAH ANGGOTA"
-        rows={1}
-        className="relative min-h-[50px] w-full resize-none rounded-xl border border-blue-500/30 bg-slate-900 px-3 py-3 text-sm font-bold leading-6 text-white outline-none placeholder:text-slate-600 transition focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30"
-      />
+  value={anggota}
+  onChange={(e) => setAnggota(e.target.value.toUpperCase())}
+  placeholder="ENTER JIKA ANGGOTA LEBIH DARI 1"
+  rows={1}
+  className="relative min-h-[50px] w-full resize-none rounded-xl border border-blue-500/30 bg-slate-900 px-3 py-3 text-sm font-bold leading-6 text-white outline-none placeholder:text-slate-600 transition focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30"
+/>
 
     </div>
 

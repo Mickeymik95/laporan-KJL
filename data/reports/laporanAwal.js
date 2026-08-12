@@ -8,7 +8,7 @@ export const laporanAwal = {
       label: "BUTIRAN LAPORAN AWAL",
       type: "textarea",
       placeholder:
-        "Masukkan makluman awal kejadian di sini. cth : 'Pada 01/01/26 jam sekitar......'",
+        "cth : 'Pada 01/01/26 jam sekitar...\n\nHasil :\nUntuk makluman awal. (LAPORAN ANDA MASUK DI SINI). Laporan penuh akan menyusul, sekian.",
       rows: 8,
     },
   ],
@@ -25,7 +25,7 @@ Tarikh : ${tarikh}
 Masa : ${masa}
 Lokasi : STESEN ${station} (KJL)
 
-Untuk makluman awal ${laporan || ""} Laporan penuh akan menyusul, sekian.
+Untuk makluman awal. ${laporan || ""}. Laporan penuh akan menyusul, sekian.
 
 Terima kasih.
 Cc @⁨all⁩`;
