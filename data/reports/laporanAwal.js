@@ -19,16 +19,18 @@ export const laporanAwal = {
     masa,
     laporan,
   }) {
-    return `Assalamualaikum & Salam Sejahtera Tuan/Puan,
+    return `*Assalamualaikum & Salam Sejahtera Tuan/Puan,*
 
 Tarikh : ${tarikh}
 Masa : ${masa}
-Lokasi : STESEN *${station}* (KJL)
+Lokasi : STESEN ${station} (KJL)
 
 Untuk makluman awal. ${laporan || ""}. Laporan penuh akan menyusul, sekian.
 
 Terima kasih.
-Cc @⁨all⁩`;
+
+ANGGOTA BERTUGAS :
+*${anggota}*`;
   },
 };
 
