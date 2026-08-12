@@ -130,7 +130,7 @@ async function handleCopy() {
   const masa =
     String(now.getHours()).padStart(2, "0") +
     String(now.getMinutes()).padStart(2, "0") +
-    "HRS";
+    " HRS";
 
   // =========================================
   // SEDIAKAN DATA FORM
@@ -461,7 +461,7 @@ function handleEdit() {
 <footer className="mt-2 pb-2 pt-1 text-center">
 
   <p className="text-[10px] font-black tracking-wide text-slate-1000">
-    SISTEM LAPORAN BY NAZMI_MIK
+    CREATED BY NAZMI_MIK
   </p>
 
   <a

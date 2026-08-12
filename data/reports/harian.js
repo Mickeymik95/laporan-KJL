@@ -3,18 +3,23 @@ export const harian = {
 
   name: "LAPORAN BIASA",
 
-  // FIELD YANG USER ISI
   fields: [
     {
       name: "tambahan",
       label: "LAPORAN TAMBAHAN",
       type: "textarea",
-      placeholder: "Tambahan akan menjadi no 4, Enter akan menjadi no 5 & seterusnya",
+      placeholder:
+        "Tambahan akan menjadi no 4, Enter akan menjadi no 5 & seterusnya",
     },
   ],
 
-  // BINA LAPORAN
-  build: ({ anggota, station, tambahan }) => {
+  build({
+    anggota,
+    station,
+    tarikh,
+    masa,
+    tambahan,
+  }) {
     const laporanAsas = [
       `1. LAPOR KAWALAN DAN PEMANTAUAN DI PLATFORM STESEN *${station}* (KJL).`,
       "2. PERGERAKAN PENUMPANG KELUAR MASUK TREN LANCAR.",
@@ -28,31 +33,19 @@ export const harian = {
         .map((item) => item.trim())
         .filter((item) => item !== "");
 
-      tambahanList.forEach((item, index) => {
+      tambahanList.forEach((item) => {
         laporanAsas.push(
           `${laporanAsas.length + 1}. ${item.toUpperCase()}`
         );
       });
     }
 
-    const sekarang = new Date();
-
-    const tarikh = sekarang.toLocaleDateString("ms-MY");
-
-    const masa = sekarang
-      .toLocaleTimeString("ms-MY", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-      })
-      .replace(":", "");
-
     return `*Assalamualaikum wbt & Salam Sejahtera YDH Tuan,*
 
 Laporan penugasan anggota bertugas Aliran Kelana Jaya Jabatan Sekuriti.
 
 TARIKH : ${tarikh}
-MASA : ${masa}HRS
+MASA : ${masa}
 TUGASAN : KAWALAN DAN PEMANTAUAN DI PLATFORM 1,2
 LOKASI : STESEN LRT *${station}* (KJL)
 
