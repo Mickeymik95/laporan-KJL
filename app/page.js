@@ -448,7 +448,7 @@ function handleEdit() {
     gap-1
     rounded-lg
     border
-    border-green-500/30
+    border-green-400/50
     bg-green-1000
     px-8
     py-1.5
@@ -458,7 +458,7 @@ function handleEdit() {
     active:scale-95
   "
 >
-  ☎️📱KLIK UNTUK CADANGAN⚙️🔨
+  ☎️📱KOMEN @ CADANGAN⚙️🔨
 </a>
 
   <p className="mt-1 text-[8px] text-slate-1000">
