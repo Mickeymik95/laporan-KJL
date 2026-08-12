@@ -15,6 +15,7 @@ export const cucian = {
       label: "NAMA SYARIKAT",
       type: "text",
       placeholder: "CTH : ALAM BERSIH SDN BHD",
+      defaultValue: "ALAM BERSIH SDN BHD",
     },
 
     {
