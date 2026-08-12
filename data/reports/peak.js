@@ -22,7 +22,7 @@ export const peak = {
       "*Update Terkini :*",
       "",
       `Tarikh : ${tarikh}`,
-      `Stesen : *${station}*`,
+      `Stesen : ${station}`,
       `Masa : ${masa}`,
       "",
       `*Status : ${status || ""}*`,
