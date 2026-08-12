@@ -468,6 +468,7 @@ function handleEdit() {
     href="https://wa.me/60149236577"
     target="_blank"
     rel="noopener noreferrer"
+    message="Assalamualaikum, saya {anggota} ingin memberikan cadangan untuk sistem laporan."
     className="
       mt-1
       inline-flex
@@ -476,7 +477,7 @@ function handleEdit() {
       rounded-lg
       border
       border-green-500/30
-      bg-green-600/10
+      bg-green-1000
       px-8
       py-1.5
       text-[9px]
@@ -488,7 +489,7 @@ function handleEdit() {
       active:scale-95
     "
   >
-    📞 ADUAN/CADANGAN 📱
+  ☎️ KLIK UNTUK CADANGAN 📱
   </a>
 
   <p className="mt-1 text-[8px] text-slate-1000">
