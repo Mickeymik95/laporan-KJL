@@ -1,6 +1,6 @@
 export const cucian = {
   id: "cucian",
-  name: "KONTRAKTOR CUCIAN",
+  name: "CUCIAN / PEMBERSIHAN",
 
   fields: [
     {
@@ -20,9 +20,9 @@ export const cucian = {
 
     {
       name: "tambahan",
-      label: "LAPORAN TAMBAHAN",
+      label: "LAPORAN TAMBAHAN (JIKA PERLU)",
       type: "textarea",
-      placeholder: "Masukkan tambahan jika ada...",
+      placeholder: "Cth : 01 x KONTRAKTOR DIBERIKAN PAS SEMENTARA...",
     },
   ],
 
