@@ -71,7 +71,7 @@ LOKASI : STESEN LRT *${station}* (KJL)
 6. LOKASI BAIK DAN DALAM KAWALAN.
 
 ANGGOTA BERTUGAS :
-${anggota}
+*${anggota}*
 
 #TERUSKAN PERKARA BAIK`;
   },
