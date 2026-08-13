@@ -54,7 +54,7 @@ export const kontraktorAm = {
     statusPas,
     staff,
   }) {
-    return `Assalamualaikum wbt & Salam Sejahtera YDH Tuan,
+    return `*Assalamualaikum wbt & Salam Sejahtera YDH Tuan,*
 
 Laporan penugasan anggota bertugas Aliran Kelana Jaya Jabatan Sekuriti.
 
@@ -73,7 +73,7 @@ LOKASI : STESEN LRT *${station}* (KJL)
 ANGGOTA BERTUGAS :
 *${anggota}*
 
-#TERUSKAN PERKARA BAIK`;
+*#TERUSKAN PERKARA BAIK*`;
   },
 };
 

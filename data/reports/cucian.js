@@ -44,7 +44,7 @@ export const cucian = {
         return `${index + 4}. ${item.toUpperCase()}`;
       });
 
-    return `Assalamualaikum wbt & Salam Sejahtera YDH Tuan,
+    return `*Assalamualaikum wbt & Salam Sejahtera YDH Tuan,*
 
 Laporan penugasan anggota bertugas Aliran Kelana Jaya Jabatan Sekuriti.
 
@@ -60,7 +60,7 @@ ${tambahanList.length ? tambahanList.join("\n") + "\n" : ""}
 ANGGOTA BERTUGAS :
 ${anggota}
 
-#TERUSKAN PERKARA BAIK`;
+*#TERUSKAN PERKARA BAIK*`;
   },
 };
 

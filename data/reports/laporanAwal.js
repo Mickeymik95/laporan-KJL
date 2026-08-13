@@ -18,12 +18,13 @@ export const laporanAwal = {
     tarikh,
     masa,
     laporan,
+    anggota,
   }) {
     return `*Assalamualaikum & Salam Sejahtera Tuan/Puan,*
 
 Tarikh : ${tarikh}
 Masa : ${masa}
-Lokasi : STESEN ${station} (KJL)
+Lokasi : STESEN *${station}* (KJL)
 
 Untuk makluman awal. ${laporan || ""}. Laporan penuh akan menyusul, sekian.
 
