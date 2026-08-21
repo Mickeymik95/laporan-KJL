@@ -393,15 +393,6 @@ function handleEdit() {
 
         <div className="flex gap-3">
 
-          {/* SEND COPY */}
-
-          <button
-            type="button"
-            onClick={handleCopy}
-            className="flex-1 rounded-xl border border-green-400/30 bg-green-600 p-3 text-xs font-black text-white shadow-[0_0_12px_rgba(34,197,94,0.20)] transition hover:bg-green-500 active:scale-95"
-          >
-            📋 WHATSAPP
-          </button>
 
           {/* EDIT */}
 
@@ -411,6 +402,16 @@ function handleEdit() {
             className="flex-1 rounded-xl border border-blue-400/30 bg-blue-600 p-3 text-xs font-black text-white shadow-[0_0_12px_rgba(59,130,246,0.20)] transition hover:bg-blue-500 active:scale-95"
           >
             ✏️ EDIT
+          </button>
+
+          {/* SEND COPY */}
+
+          <button
+            type="button"
+            onClick={handleCopy}
+            className="flex-1 rounded-xl border border-green-400/30 bg-green-600 p-3 text-xs font-black text-white shadow-[0_0_12px_rgba(34,197,94,0.20)] transition hover:bg-green-500 active:scale-95"
+          >
+            📋 WHATSAPP
           </button>
 
         </div>
