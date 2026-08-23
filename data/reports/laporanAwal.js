@@ -8,7 +8,7 @@ export const laporanAwal = {
       label: "BUTIRAN LAPORAN AWAL",
       type: "textarea",
       placeholder:
-        "cth : 'Pada 01/01/26 jam sekitar...'\n\nHasil :\nUntuk makluman awal. Pada 01/01/26 jam sekitar.... Laporan penuh akan menyusul, sekian.",
+        "cth : 'Jam sekitar 1234 Hrs....'\n\nHasil :\nUntuk makluman awal. Pada (tarikh auto) [ayat anda auto masuk di sini, cth : jam sekitar 1234 Hrs] Laporan penuh akan menyusul, sekian.",
       rows: 8,
     },
   ],
@@ -26,7 +26,7 @@ Tarikh : ${tarikh}
 Masa : ${masa}
 Lokasi : STESEN *${station}* (KJL)
 
-Untuk makluman awal. ${laporan || ""}. Laporan penuh akan menyusul, sekian.
+Untuk makluman awal, pada ${tarikh} ${laporan || ""}. Laporan penuh akan menyusul, sekian.
 
 Terima kasih.
 
