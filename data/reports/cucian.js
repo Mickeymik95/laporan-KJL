@@ -57,7 +57,7 @@ LOKASI : STESEN LRT *${station}* (KJL)
 3. Tiada sebarang penyamaran / perkara mencurigakan, sekian.
 ${tambahanList.length ? tambahanList.join("\n") + "\n" : ""}
 ANGGOTA BERTUGAS :
-${anggota}
+*${anggota}*
 
 *#TERUSKAN PERKARA BAIK*`;
   },
