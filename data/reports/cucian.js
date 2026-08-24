@@ -14,8 +14,7 @@ export const cucian = {
       name: "syarikat",
       label: "NAMA SYARIKAT",
       type: "text",
-      placeholder: "CTH : ALAM BERSIH SDN BHD",
-      defaultValue: "ALAM BERSIH SDN BHD",
+      defaultValue: "Alam Bersih Sdn Bhd",
     },
 
     {
@@ -53,7 +52,7 @@ MASA : ${masa}
 TUGASAN : PERIKSA KEMASUKAN KONTRAKTOR
 LOKASI : STESEN LRT *${station}* (KJL)
 
-1. Kehadiran *${bilanganKontraktor}x* kontraktor pembersihan syarikat *${syarikat?.ToUpperCase() || ""}* tujuan kerja-kerja cucian stesen.
+1. Kehadiran *${bilanganKontraktor}x* kontraktor pembersihan syarikat *${syarikat || ""}* tujuan kerja-kerja cucian stesen.
 2. Semakan pas kontraktor serta work permit masih dalam tempoh sah laku.
 3. Tiada sebarang penyamaran / perkara mencurigakan, sekian.
 ${tambahanList.length ? tambahanList.join("\n") + "\n" : ""}
