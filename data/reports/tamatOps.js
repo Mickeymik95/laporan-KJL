@@ -24,7 +24,7 @@ const tamatOps = {
       .map((item) => item.trim())
       .filter(Boolean)
       .map((item, index) => {
-        return `${index + 4}. ${item.toUpperCase()}`;
+        return `${index + 4}. ${item}`;
       });
 
     return `*Assalamualaikum wbt & Salam Sejahtera YDH Tuan,*
@@ -36,7 +36,7 @@ MASA : ${masa}
 TUGASAN : RONDAAN STESEN
 LOKASI : STESEN LRT *${station}* (KJL)
 
-1. Rondaan dan pemantauan sekitar kawasan stesen selepas tamat operasi tren bagi stesen *${station}* (kjl).
+1. Rondaan dan pemantauan sekitar kawasan stesen selepas tamat operasi tren bagi stesen *${station}* (KJL).
 2. Kawasan concourse, kiosk, tandas, surau, bilik janitor, er, cso, tangga kecemasan dan platform.
 3. Selesai rondaan lokasi baik, serta tiada kelibat penumpang didalam stesen dan keadaan terkawal.
 ${tambahanList.length ? tambahanList.join("\n") + "\n" : ""}

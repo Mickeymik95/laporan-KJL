@@ -13,7 +13,7 @@ export const oku = {
     {
       name: "platform",
       label: "PLATFORM",
-      type: "select",
+      type: "radio",
       placeholder: "PILIH PLATFORM",
       options: [
         "PLATFORM 1",
