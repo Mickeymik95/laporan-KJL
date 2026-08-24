@@ -30,9 +30,9 @@ export const kontraktorAm = {
       label: "STATUS PAS KONTRAKTOR",
       type: "radio",
       options: [
-        "DIBERIKAN PAS KONTRAKTOR SEMENTARA SEHINGGA KERJA-KERJA BAIK PULIH SIAP SEPENUHNYA.",
-        "MEMPUNYAI PAS KONTRAKTOR YANG SAH",
-        "SEBILANGAN KONTRAKTOR DIBERIKAN PAS KONTRAKTOR SEMENTARA",
+        "Diberikan pas kontraktor sementara sehingga kerja-kerja baik pulih siap sepenuhnya.",
+        "Mempunyai pas kontraktor yang sah",
+        "Sebilangan kontraktor diberikan pas kontraktor sementara",
       ],
     },
 
@@ -64,12 +64,12 @@ MASA : ${masa}
 TUGASAN : PEMERIKSAAN KEMASUKAN KONTRAKTOR
 LOKASI : STESEN LRT *${station}* (KJL)
 
-1. LAPOR KEMASUKAN *${bilanganKontraktor}X* KONTRAKTOR *${syarikat?.toUpperCase() || ""}.*
-2. MASUK MEMBUAT KERJA-KERJA *${kerja?.toUpperCase() || ""}.*
-3. KESEMUA KONTRAKTOR MEMPUNYAI WORK PERMIT.
-4. *${statusPas?.toUpperCase() || ""}.*
-5. KESEMUA KONTRAKTOR DIPANTAU OLEH STAFF BERTUGAS *${staff?.toUpperCase() || ""}.*
-6. LOKASI BAIK DAN DALAM KAWALAN.
+1. Lapor kemasukan *${bilangankontraktor}x* kontraktor *${syarikat?.touppercase() || ""}.*
+2. Masuk membuat kerja-kerja *${kerja?.touppercase() || ""}.*
+3. Kesemua kontraktor mempunyai work permit.
+4. *${statuspas?.touppercase() || ""}.*
+5. Kesemua kontraktor dipantau oleh staff bertugas *${staff?.touppercase() || ""}.*
+6. Lokasi baik dan dalam kawalan.
 
 ANGGOTA BERTUGAS :
 *${anggota}*

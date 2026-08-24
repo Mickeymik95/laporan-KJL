@@ -36,9 +36,9 @@ MASA : ${masa}
 TUGASAN : RONDAAN STESEN
 LOKASI : STESEN LRT *${station}* (KJL)
 
-1. RONDAAN DAN PEMANTAUAN SEKITAR KAWASAN STESEN SELEPAS TAMAT OPERASI TREN BAGI STESEN *${station}* (KJL).
-2. KAWASAN CONCOURSE, KIOSK, TANDAS, SURAU, BILIK JANITOR, ER, CSO, TANGGA KECEMASAN DAN PLATFORM.
-3. SELESAI RONDAAN LOKASI BAIK, SERTA TIADA KELIBAT PENUMPANG DIDALAM STESEN DAN KEADAAN TERKAWAL.
+1. Rondaan dan pemantauan sekitar kawasan stesen selepas tamat operasi tren bagi stesen *${station}* (kjl).
+2. Kawasan concourse, kiosk, tandas, surau, bilik janitor, er, cso, tangga kecemasan dan platform.
+3. Selesai rondaan lokasi baik, serta tiada kelibat penumpang didalam stesen dan keadaan terkawal.
 ${tambahanList.length ? tambahanList.join("\n") + "\n" : ""}
 ANGGOTA BERTUGAS :
 *${anggota}*

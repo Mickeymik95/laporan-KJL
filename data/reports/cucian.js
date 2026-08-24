@@ -53,10 +53,10 @@ MASA : ${masa}
 TUGASAN : PERIKSA KEMASUKAN KONTRAKTOR
 LOKASI : STESEN LRT *${station}* (KJL)
 
-1. KEHADIRAN *${bilanganKontraktor}X* KONTRAKTOR PEMBERSIHAN SYARIKAT *${syarikat?.toUpperCase() || ""}* TUJUAN KERJA-KERJA CUCIAN STESEN.
-2. SEMAKAN PAS KONTRAKTOR SERTA WORK PERMIT MASIH DALAM TEMPOH SAH LAKU.
-3. TIADA SEBARANG PENYAMARAN / PERKARA MENCURIGAKAN, SEKIAN.
-${tambahanList.length ? tambahanList.join("\n") + "\n" : ""}
+1. Kehadiran *${bilangankontraktor}x* kontraktor pembersihan syarikat *${syarikat?.touppercase() || ""}* tujuan kerja-kerja cucian stesen.
+2. Semakan pas kontraktor serta work permit masih dalam tempoh sah laku.
+3. Tiada sebarang penyamaran / perkara mencurigakan, sekian.
+${tambahanlist.length ? tambahanlist.join("\n") + "\n" : ""}
 ANGGOTA BERTUGAS :
 ${anggota}
 

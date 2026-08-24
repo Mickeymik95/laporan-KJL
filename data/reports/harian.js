@@ -22,9 +22,9 @@ export const harian = {
     tambahan,
   }) {
     const laporanAsas = [
-      `1. LAPOR KAWALAN DAN PEMANTAUAN DI PLATFORM STESEN *${station}* (KJL).`,
-      "2. PERGERAKAN PENUMPANG KELUAR MASUK TREN LANCAR.",
-      "3. PERKHIDMATAN TREN BEROPERASI SEPERTI BIASA.",
+      `1. Lapor kawalan dan pemantauan di platform stesen *${station}* (KJL).`,
+      "2. Pergerakan penumpang keluar masuk tren lancar.",
+      "3. Perkhidmatan tren beroperasi seperti biasa.",
     ];
 
     // Jika ada laporan tambahan
