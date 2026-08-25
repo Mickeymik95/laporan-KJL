@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { zones } from "../data/zones";
-import { stationShortNames } from "../zones";
+import { stationShortNames } from "../data/zones";
 import { reports } from "../data/reports";
 import Form from "../components/reports/Form";
 
