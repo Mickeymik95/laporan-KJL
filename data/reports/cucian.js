@@ -40,7 +40,7 @@ export const cucian = {
       .map((item) => item.trim())
       .filter(Boolean)
       .map((item, index) => {
-        return `${index + 4}. ${item.toUpperCase()}`;
+        return `${index + 4}. ${item}`;
       });
 
     return `*Assalamualaikum wbt & Salam Sejahtera YDH Tuan,*

@@ -71,3 +71,47 @@ export const zones = [
     ],
   },
 ];
+
+export const stationShortNames = {
+  "GOMBAK": "GBK",
+  "TAMAN MELATI": "TAM",
+  "WANGSA MAJU": "WGM",
+  "SRI RAMPAI": "SRI",
+  "SETIAWANGSA": "STW",
+  "JELATEK": "JLT",
+  "DATO' KERAMAT": "DKM",
+  "DAMAI": "DAM",
+  "AMPANG PARK": "AMP",
+  "KLCC": "KLCC",
+
+  "KAMPUNG BARU": "KBU",
+  "DANG WANGI": "DWI",
+  "MASJID JAMEK": "MJD",
+  "PASAR SENI": "PSR",
+  "KL SENTRAL": "KLS",
+  "BANGSAR": "BSR",
+
+  "ABDULLAH HUKUM": "ABH",
+  "KERINCHI": "KER",
+  "UNIVERSITI": "UNI",
+  "TAMAN JAYA": "TJA",
+  "ASIA JAYA": "ASJ",
+  "TAMAN PARAMOUNT": "TPR",
+  "TAMAN BAHAGIA": "TBH",
+  "KELANA JAYA": "KLJ",
+
+  "LEMBAH SUBANG": "LSB",
+  "ARA DAMANSARA": "ARD",
+
+  "GLENMARIE": "GLM",
+  "SUBANG JAYA": "SBJ",
+  "SS15": "SS15",
+  "SS18": "SS18",
+  "TAIPAN": "TAI",
+  "WAWASAN": "WAW",
+  "USJ7": "USJ7",
+  "USJ 21": "USJ21",
+  "ALAM MEGAH": "ALM",
+  "SUBANG ALAM": "SBA",
+  "PUTRA HEIGHTS": "PTH",
+};

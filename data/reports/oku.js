@@ -1,3 +1,5 @@
+import { stationShortNames } from "../zones";
+
 export const oku = {
   id: "oku",
   name: "OKU",
@@ -14,7 +16,6 @@ export const oku = {
       name: "platform",
       label: "PLATFORM",
       type: "radio",
-      placeholder: "PILIH PLATFORM",
       options: [
         "PLATFORM 1",
         "PLATFORM 2",
@@ -43,7 +44,10 @@ export const oku = {
     trenId,
     door,
   }) {
-    return `*◇ OKU - ${station} ➡️ ${stesenTujuan}*
+    const stationShortName =
+      stationShortNames[station] || station;
+
+    return `*◇ OKU - ${stationShortName} ➡️ ${stesenTujuan}*
 *◇ ${platform}*
 *◇ Tren Id ${trenId} - Door ${door}*`;
   },
