@@ -20,7 +20,7 @@ export const laporanAwal = {
       label: "Kawasan kejadian (Tak perlu letak .noktah)",
       type: "textarea",
       rows: 3,
-      placeholder:"cth : Tren / platform 1/2 / Concourse / Eskalator",
+      placeholder:"cth : Tren / platform 1/2 / Concourse / Eskalator / Tandas",
     },
     {
       name: "tindakan1",
@@ -28,7 +28,7 @@ export const laporanAwal = {
       type: "textarea",
       rows: 2,
       placeholder:"cth : Memaklumkan kepada SCC & Penyelia bertugas",
-      defaultValue: "Memaklumkan kepada SCC & Penyelia bertugas",
+      defaultValue: "Memaklumkan kepada CSA, SCC & Penyelia bertugas",
     },
     {
       name: "tindakan2",
@@ -57,17 +57,17 @@ MASA : ${masa}
 TUGASAN : LAPORAN AWAL KEJADIAN
 LOKASI : STESEN *${station}* (KJL)
 
-Untuk makluman awal, Jam lebih kurang ${masaKejadian}, \
-telah berlaku kejadian ${jenisLaporan.toUpperCase() || ""} \
+Untuk makluman awal, Jam lebih kurang ${masaKejadian} Hrs, \
+telah berlaku kejadian *${jenisLaporan.toUpperCase() || ""}* \
 di kawasan ${kawasan || ""}. Saya telah ${tindakan1 || ""}. \
 Seterusnya ${tindakan2 || ""}. Laporan penuh akan menyusul, sekian.
 
-Terima kasih.
+TERIMA KASIH.
 
 ANGGOTA BERTUGAS :
 *${anggota}*
 
-#TERUSKAN PERKARA BAIK`;
+*#TERUSKAN PERKARA BAIK*`;
   },
 };
 
