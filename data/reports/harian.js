@@ -9,8 +9,7 @@ export const harian = {
       label: "LAPORAN TAMBAHAN",
       type: "textarea",
       rows: 8,
-      placeholder:
-        "Tambahan akan masuk di no. 4 dalam laporan, Enter akan masuk di no. 5 & seterusnya",
+      placeholder: "Tambahan akan masuk di no. 4 dalam laporan, Enter akan masuk di no. 5 & seterusnya\n\n1. Lapor kawalan dan pemantauan di platform.\n2. Pergerakan penumpang keluar masuk tren lancar.\n3. Perkhidmatan tren beroperasi seperti biasa.\n4. (Laporan tambahan anda di sini).",
     },
   ],
 

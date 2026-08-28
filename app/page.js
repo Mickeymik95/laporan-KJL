@@ -391,7 +391,9 @@ function handleEdit() {
       {/* BUTANG */}
 
       <section className="mt-4 rounded-2xl border border-blue-500/20 bg-slate-900 p-4 shadow-[0_0_16px_rgba(59,130,246,0.08)]">
-
+        <label className="mb-2 ml-1 block animate-[pulse_1s_ease-in-out_infinite] text-[9px] font-black tracking-wide text-red-500">
+  TEKAN EDIT UNTUK BUTIRAN LAPORAN
+</label>
         <div className="flex gap-3">
 
 

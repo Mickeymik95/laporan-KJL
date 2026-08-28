@@ -4,12 +4,38 @@ export const laporanAwal = {
 
   fields: [
     {
-      name: "laporan",
-      label: "BUTIRAN LAPORAN AWAL",
+      name: "masaKejadian",
+      label: "Anggaran waktu kejadian",
+      type: "text",
+      placeholder:"cth : 1243",
+    },
+    {
+      name: "jenisLaporan",
+      label: "Jenis laporan",
+      type: "radio",
+      options: ["Redmike", "Redtango"],
+    },
+    {
+      name: "kawasan",
+      label: "Kawasan kejadian (Tak perlu letak .noktah)",
       type: "textarea",
-      placeholder:
-        "cth : 'Jam sekitar 1234 Hrs....'\n\nHasil :\nUntuk makluman awal. Pada (tarikh auto) [ayat anda auto masuk di sini, cth : jam sekitar 1234 Hrs] Laporan penuh akan menyusul, sekian.",
-      rows: 8,
+      rows: 3,
+      placeholder:"cth : Tren / platform 1/2 / Concourse / Eskalator",
+    },
+    {
+      name: "tindakan1",
+      label: "Tindakan 1 (Tak perlu letak .noktah)",
+      type: "textarea",
+      rows: 2,
+      placeholder:"cth : Memaklumkan kepada SCC & Penyelia bertugas",
+      defaultValue: "Memaklumkan kepada SCC & Penyelia bertugas",
+    },
+    {
+      name: "tindakan2",
+      label: "Tindakan 2 (Tak perlu letak .noktah)",
+      type: "textarea",
+      rows: 4,
+      placeholder:"cth : Membawa mangsa/pengadu ke ER untuk bantuan awal\n Menahan pelaku dan mengambil butir-butir kejadian",
     },
   ],
 
@@ -17,7 +43,11 @@ export const laporanAwal = {
     station,
     tarikh,
     masa,
-    laporan,
+    masaKejadian,
+    jenisLaporan,
+    tindakan1,
+    tindakan2,
+    kawasan,
     anggota,
   }) {
     return `*Assalamualaikum & Salam Sejahtera Tuan/Puan,*
@@ -27,12 +57,17 @@ MASA : ${masa}
 TUGASAN : LAPORAN AWAL KEJADIAN
 LOKASI : STESEN *${station}* (KJL)
 
-Untuk makluman awal, ${laporan || ""}. Laporan penuh akan menyusul, sekian.
+Untuk makluman awal, Jam lebih kurang ${masaKejadian}, \
+telah berlaku kejadian ${jenisLaporan.toUpperCase() || ""} \
+di kawasan ${kawasan || ""}. Saya telah ${tindakan1 || ""}. \
+Seterusnya ${tindakan2 || ""}. Laporan penuh akan menyusul, sekian.
 
 Terima kasih.
 
 ANGGOTA BERTUGAS :
-*${anggota}*`;
+*${anggota}*
+
+#TERUSKAN PERKARA BAIK`;
   },
 };
 
