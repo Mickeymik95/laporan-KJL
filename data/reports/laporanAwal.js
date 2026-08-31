@@ -63,18 +63,18 @@ export const laporanAwal = {
 TARIKH : ${tarikh}
 MASA : ${masa}
 LOKASI : STESEN *${station}* (KJL)
-TUGASAN : *LAPORAN AWAL KEJADIAN ${jenisLaporan.toUpperCase() || ""}*
+
+*LAPORAN AWAL KEJADIAN ${jenisLaporan.toUpperCase() || ""}*
 
 Untuk makluman awal, Jam lebih kurang ${masaKejadian} Hrs, \
 telah berlaku kejadian *${jenisLaporan.toUpperCase() || ""}* di ${kawasan || ""}. \
 ${ringkasanLaporan || ""}.
 
 *TINDAKAN :-*
-1. ${tindakan1 || ""}.
-2. ${tindakan2 || ""}.
-Laporan penuh akan menyusul, sekian.
+* ${tindakan1 || ""}.
+* ${tindakan2 || ""}.
 
-TERIMA KASIH.
+Laporan penuh akan menyusul, sekian.
 
 ANGGOTA BERTUGAS :
 *${anggota}*
