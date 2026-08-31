@@ -4,23 +4,30 @@ export const laporanAwal = {
 
   fields: [
     {
+      name: "jenisLaporan",
+      label: "Jenis laporan",
+      type: "input",
+      placeholder:"Cth : Redmike / Redtanggo / Kecurian Barang",
+    },
+    {
       name: "masaKejadian",
       label: "Anggaran waktu kejadian",
       type: "text",
-      placeholder:"cth : 1243",
-    },
-    {
-      name: "jenisLaporan",
-      label: "Jenis laporan",
-      type: "radio",
-      options: ["Redmike", "Redtango"],
+      placeholder:"cth : 1543 / 1024 (Tak perlu letak Hrs/HRS",
     },
     {
       name: "kawasan",
       label: "Kawasan kejadian (Tak perlu letak .noktah)",
       type: "textarea",
-      rows: 3,
-      placeholder:"cth : Tren / platform 1/2 / Concourse / Eskalator / Tandas",
+      rows: 2,
+      placeholder:"cth : Tren / platform 1/2 / Concourse / Eskalator / Tandas / Parking",
+    },
+    {
+      name: "ringkasanLaporan",
+      label: "Ringkasan Laporan (Tak perlu letak .noktah)",
+      type: "textarea",
+      rows: 4,
+      placeholder:"cth : 01x warganegara Malaysia (w)(m) pitam \n 01x warganegara Bangladesh turun ke Trek",
     },
     {
       name: "tindakan1",
@@ -45,22 +52,27 @@ export const laporanAwal = {
     masa,
     masaKejadian,
     jenisLaporan,
+    ringkasanLaporan,
     tindakan1,
     tindakan2,
     kawasan,
     anggota,
   }) {
-    return `*Assalamualaikum & Salam Sejahtera Tuan/Puan,*
+    return `*Assalamualaikum & Salam Sejahtera Tuan,*
 
 TARIKH : ${tarikh}
 MASA : ${masa}
-TUGASAN : LAPORAN AWAL KEJADIAN
 LOKASI : STESEN *${station}* (KJL)
+TUGASAN : *LAPORAN AWAL KEJADIAN ${jenisLaporan.toUpperCase() || ""}*
 
 Untuk makluman awal, Jam lebih kurang ${masaKejadian} Hrs, \
-telah berlaku kejadian *${jenisLaporan.toUpperCase() || ""}* \
-di kawasan ${kawasan || ""}. Saya telah ${tindakan1 || ""}. \
-Seterusnya ${tindakan2 || ""}. Laporan penuh akan menyusul, sekian.
+telah berlaku kejadian *${jenisLaporan.toUpperCase() || ""}* di ${kawasan || ""}. \
+${ringkasanLaporan || ""}.
+
+*TINDAKAN :-*
+1. ${tindakan1 || ""}.
+2. ${tindakan2 || ""}.
+Laporan penuh akan menyusul, sekian.
 
 TERIMA KASIH.
 
