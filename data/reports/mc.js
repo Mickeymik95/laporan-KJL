@@ -97,7 +97,7 @@ export const mc = {
     noTelKlinik,
     ulasanPenyelia,
   }) {
-    return `*ASSALAMUALAIKUM WBT, TUAN/PUAN.*
+    return `*ASSALAMUALAIKUM , TUAN/PUAN,*
 
 *ALIRAN :* KJL ZON 3
 *SHIFT :* ${shift || ""}
