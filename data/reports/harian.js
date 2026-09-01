@@ -35,7 +35,7 @@ export const harian = {
 
       tambahanList.forEach((item) => {
         laporanAsas.push(
-          `${laporanAsas.length + 1}. ${item.toUpperCase()}`
+          `${laporanAsas.length + 1}. ${item}`
         );
       });
     }
