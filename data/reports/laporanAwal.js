@@ -16,18 +16,11 @@ export const laporanAwal = {
       placeholder:"cth : 1543 / 1024 (Tak perlu letak Hrs/HRS",
     },
     {
-      name: "kawasan",
-      label: "Kawasan kejadian (Tak perlu letak .noktah)",
+      name: "ringkasanKejadian",
+      label: "Ringkasan Kejadian (Tak perlu letak .noktah)",
       type: "textarea",
-      rows: 2,
-      placeholder:"cth : Tren / platform 1/2 / Concourse / Eskalator / Tandas / Parking",
-    },
-    {
-      name: "ringkasanLaporan",
-      label: "Ringkasan Laporan (Tak perlu letak .noktah)",
-      type: "textarea",
-      rows: 4,
-      placeholder:"cth : 01x warganegara Malaysia (w)(m) pitam \n 01x warganegara Bangladesh turun ke Trek",
+      rows: 5,
+      placeholder:"cth : 01x (w)(m) warganegara Malaysia pitam di PF 1 \n 01x (L) warganegara Bangladesh turun ke Trek untuk mengambil telefon bimbit",
     },
     {
       name: "tindakan1",
@@ -52,10 +45,9 @@ export const laporanAwal = {
     masa,
     masaKejadian,
     jenisLaporan,
-    ringkasanLaporan,
+    ringkasanKejadian,
     tindakan1,
     tindakan2,
-    kawasan,
     anggota,
   }) {
     return `*Assalamualaikum & Salam Sejahtera Tuan,*
@@ -67,8 +59,8 @@ LOKASI : STESEN *${station}* (KJL)
 *LAPORAN AWAL KEJADIAN ${jenisLaporan.toUpperCase() || ""}*
 
 Untuk makluman awal, Jam lebih kurang ${masaKejadian} Hrs, \
-telah berlaku kejadian *${jenisLaporan.toUpperCase() || ""}* di ${kawasan || ""}. \
-${ringkasanLaporan || ""}.
+telah berlaku kejadian *${jenisLaporan.toUpperCase() || ""}*. \
+${ringkasanKejadian || ""}.
 
 *TINDAKAN :-*
 * ${tindakan1 || ""}.
