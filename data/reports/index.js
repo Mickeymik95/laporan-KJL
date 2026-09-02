@@ -6,6 +6,7 @@ import cucian from "./cucian";
 import laporanAwal from "./laporanAwal";
 import kontraktorAm from "./kontraktorAm";
 import mc from "./mc";
+import internalReport from "./internalReport";
 export const reports = [
   harian,
   peak,
@@ -15,4 +16,5 @@ export const reports = [
   laporanAwal,
   kontraktorAm,
   mc,
+  internalReport,
 ];

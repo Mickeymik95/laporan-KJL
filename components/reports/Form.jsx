@@ -10,15 +10,40 @@ export default function Form({
   onClose,
   onSave,
 }) {
-  function getInitialData() {
+  /* =========================================
+     INITIAL DATA
+  ========================================= */
+
+  function createInitialData() {
     const initialData = {};
 
     (report?.fields || []).forEach((field) => {
-      if (field.defaultValue !== undefined) {
+      // Abaikan field INFO
+      if (field.type === "info") return;
+
+      const savedValue = savedData?.[field.name];
+
+      // Guna data yang pernah disimpan
+      if (
+        savedValue !== undefined &&
+        savedValue !== null &&
+        savedValue !== ""
+      ) {
+        initialData[field.name] = savedValue;
+      }
+
+      // Default value
+      else if (field.defaultValue !== undefined) {
         initialData[field.name] = field.defaultValue;
-      } else if (field.type === "checkbox") {
+      }
+
+      // Checkbox
+      else if (field.type === "checkbox") {
         initialData[field.name] = [];
-      } else {
+      }
+
+      // Field biasa
+      else {
         initialData[field.name] = "";
       }
     });
@@ -26,61 +51,21 @@ export default function Form({
     return initialData;
   }
 
-const [formData, setFormData] = useState(() => {
-  const initialData = {};
-
-  (report?.fields || []).forEach((field) => {
-    if (savedData && savedData[field.name] !== undefined) {
-      initialData[field.name] = savedData[field.name];
-    } else if (field.defaultValue !== undefined) {
-      initialData[field.name] = field.defaultValue;
-    } else if (field.type === "checkbox") {
-      initialData[field.name] = [];
-    } else {
-      initialData[field.name] = "";
-    }
-  });
-
-  return initialData;
-});
-
   /* =========================================
-     RESET FORM APABILA REPORT BERUBAH
+     STATE
   ========================================= */
 
-useEffect(() => {
-  const initialData = {};
+  const [formData, setFormData] = useState(() =>
+    createInitialData()
+  );
 
-  (report?.fields || []).forEach((field) => {
-    const savedValue = savedData?.[field.name];
+  /* =========================================
+     UPDATE FORM BILA REPORT / SAVED DATA BERUBAH
+  ========================================= */
 
-    // Guna data lama hanya jika betul-betul ada isi
-    if (
-      savedValue !== undefined &&
-      savedValue !== null &&
-      savedValue !== ""
-    ) {
-      initialData[field.name] = savedValue;
-    }
-
-    // Kalau tiada data lama, guna defaultValue
-    else if (field.defaultValue !== undefined) {
-      initialData[field.name] = field.defaultValue;
-    }
-
-    // Checkbox
-    else if (field.type === "checkbox") {
-      initialData[field.name] = [];
-    }
-
-    // Field biasa
-    else {
-      initialData[field.name] = "";
-    }
-  });
-  
-  setFormData(initialData);
-}, [report, savedData]);
+  useEffect(() => {
+    setFormData(createInitialData());
+  }, [report, savedData]);
 
   /* =========================================
      CHANGE VALUE
@@ -108,7 +93,41 @@ useEffect(() => {
   ========================================= */
 
   function renderField(field) {
-    
+    /* =====================================
+       INFO / PERINGATAN
+    ===================================== */
+
+    if (field.type === "info") {
+      return (
+        <div
+          className="
+            rounded-xl
+            border
+            border-yellow-500/40
+            bg-yellow-500/10
+            p-3
+            shadow-[0_0_12px_rgba(234,179,8,0.08)]
+          "
+        >
+          {field.title && (
+            <h3 className="text-[11px] font-black text-yellow-400">
+              ⚠️ {field.title}
+            </h3>
+          )}
+
+          {field.message && (
+            <p className="mt-1 text-[10px] font-bold leading-relaxed text-yellow-200/90">
+              {field.message}
+            </p>
+          )}
+        </div>
+      );
+    }
+
+    /* =====================================
+       VALUE
+    ===================================== */
+
     const value =
       formData[field.name] !== undefined
         ? formData[field.name]
@@ -123,18 +142,13 @@ useEffect(() => {
         <textarea
           value={value}
           onChange={(e) =>
-            handleChange(
-              field.name,
-              e.target.value
-            )
+            handleChange(field.name, e.target.value)
           }
-          placeholder={
-            field.placeholder || ""
-          }
+          placeholder={field.placeholder || ""}
           rows={field.rows || 4}
           className="
             w-full
-            resize-none
+            resize-y
             rounded-lg
             border
             border-slate-700
@@ -142,6 +156,7 @@ useEffect(() => {
             p-2
             text-[11px]
             font-bold
+            leading-relaxed
             text-white
             outline-none
             transition
@@ -163,10 +178,7 @@ useEffect(() => {
         <select
           value={value}
           onChange={(e) =>
-            handleChange(
-              field.name,
-              e.target.value
-            )
+            handleChange(field.name, e.target.value)
           }
           className="
             w-full
@@ -187,19 +199,17 @@ useEffect(() => {
         >
           <option value="">
             {field.placeholder ||
-              `PILIH ${field.label}`}
+              `PILIH ${field.label || "PILIHAN"}`}
           </option>
 
-          {(field.options || []).map(
-            (option, index) => (
-              <option
-                key={index}
-                value={option}
-              >
-                {option}
-              </option>
-            )
-          )}
+          {(field.options || []).map((option, index) => (
+            <option
+              key={index}
+              value={option}
+            >
+              {option}
+            </option>
+          ))}
         </select>
       );
     }
@@ -220,38 +230,40 @@ useEffect(() => {
             p-2
           "
         >
-          {(field.options || []).map(
-            (option, index) => (
-              <label
-                key={index}
-                className="
-                  flex
-                  cursor-pointer
-                  items-center
-                  gap-2
-                  text-[11px]
-                  font-bold
-                  text-slate-300
-                "
-              >
-                <input
-                  type="radio"
-                  name={field.name}
-                  value={option}
-                  checked={value === option}
-                  onChange={(e) =>
-                    handleChange(
-                      field.name,
-                      e.target.value
-                    )
-                  }
-                  className="accent-blue-500"
-                />
+          {(field.options || []).map((option, index) => (
+            <label
+              key={index}
+              className="
+                flex
+                cursor-pointer
+                items-center
+                gap-2
+                rounded-md
+                p-1
+                text-[11px]
+                font-bold
+                text-slate-300
+                transition
+                hover:bg-slate-800
+              "
+            >
+              <input
+                type="radio"
+                name={field.name}
+                value={option}
+                checked={value === option}
+                onChange={(e) =>
+                  handleChange(
+                    field.name,
+                    e.target.value
+                  )
+                }
+                className="accent-blue-500"
+              />
 
-                <span>{option}</span>
-              </label>
-            )
-          )}
+              <span>{option}</span>
+            </label>
+          ))}
         </div>
       );
     }
@@ -292,35 +304,35 @@ useEffect(() => {
             p-2
           "
         >
-          {(field.options || []).map(
-            (option, index) => (
-              <label
-                key={index}
-                className="
-                  flex
-                  cursor-pointer
-                  items-center
-                  gap-2
-                  text-[11px]
-                  font-bold
-                  text-slate-300
-                "
-              >
-                <input
-                  type="checkbox"
-                  checked={checkedValues.includes(
-                    option
-                  )}
-                  onChange={() =>
-                    toggleCheckbox(option)
-                  }
-                  className="accent-blue-500"
-                />
+          {(field.options || []).map((option, index) => (
+            <label
+              key={index}
+              className="
+                flex
+                cursor-pointer
+                items-center
+                gap-2
+                rounded-md
+                p-1
+                text-[11px]
+                font-bold
+                text-slate-300
+                transition
+                hover:bg-slate-800
+              "
+            >
+              <input
+                type="checkbox"
+                checked={checkedValues.includes(option)}
+                onChange={() =>
+                  toggleCheckbox(option)
+                }
+                className="accent-blue-500"
+              />
 
-                <span>{option}</span>
-              </label>
-            )
-          )}
+              <span>{option}</span>
+            </label>
+          ))}
         </div>
       );
     }
@@ -335,10 +347,7 @@ useEffect(() => {
           type="date"
           value={value}
           onChange={(e) =>
-            handleChange(
-              field.name,
-              e.target.value
-            )
+            handleChange(field.name, e.target.value)
           }
           className="
             w-full
@@ -351,7 +360,10 @@ useEffect(() => {
             font-bold
             text-white
             outline-none
+            transition
             focus:border-blue-400
+            focus:ring-1
+            focus:ring-blue-400/30
           "
         />
       );
@@ -367,10 +379,7 @@ useEffect(() => {
           type="time"
           value={value}
           onChange={(e) =>
-            handleChange(
-              field.name,
-              e.target.value
-            )
+            handleChange(field.name, e.target.value)
           }
           className="
             w-full
@@ -383,7 +392,10 @@ useEffect(() => {
             font-bold
             text-white
             outline-none
+            transition
             focus:border-blue-400
+            focus:ring-1
+            focus:ring-blue-400/30
           "
         />
       );
@@ -399,14 +411,9 @@ useEffect(() => {
           type="number"
           value={value}
           onChange={(e) =>
-            handleChange(
-              field.name,
-              e.target.value
-            )
+            handleChange(field.name, e.target.value)
           }
-          placeholder={
-            field.placeholder || ""
-          }
+          placeholder={field.placeholder || ""}
           className="
             w-full
             rounded-lg
@@ -418,6 +425,7 @@ useEffect(() => {
             font-bold
             text-white
             outline-none
+            transition
             placeholder:text-slate-600
             focus:border-blue-400
             focus:ring-1
@@ -428,7 +436,7 @@ useEffect(() => {
     }
 
     /* =====================================
-       TEXT / DEFAULT
+       TEXT / INPUT / DEFAULT
     ===================================== */
 
     return (
@@ -436,14 +444,9 @@ useEffect(() => {
         type="text"
         value={value}
         onChange={(e) =>
-          handleChange(
-            field.name,
-            e.target.value
-          )
+          handleChange(field.name, e.target.value)
         }
-        placeholder={
-          field.placeholder || ""
-        }
+        placeholder={field.placeholder || ""}
         className="
           w-full
           rounded-lg
@@ -455,6 +458,7 @@ useEffect(() => {
           font-bold
           text-white
           outline-none
+          transition
           placeholder:text-slate-600
           focus:border-blue-400
           focus:ring-1
@@ -482,12 +486,14 @@ useEffect(() => {
       {/* DYNAMIC FIELDS */}
 
       <div>
-        {(report?.fields || []).map(
-          (field) => (
-            <div
-              key={field.name}
-              className="mb-3"
-            >
+        {(report?.fields || []).map((field, index) => (
+          <div
+            key={field.name || `info-${index}`}
+            className="mb-3"
+          >
+            {/* LABEL HANYA UNTUK FIELD BIASA */}
+
+            {field.type !== "info" && field.label && (
               <label
                 className="
                   mb-1
@@ -500,11 +506,11 @@ useEffect(() => {
               >
                 {field.label}
               </label>
+            )}
 
-              {renderField(field)}
-            </div>
-          )
-        )}
+            {renderField(field)}
+          </div>
+        ))}
       </div>
 
       {/* BUTTON */}
@@ -528,7 +534,7 @@ useEffect(() => {
             active:scale-95
           "
         >
-          ❌ TUTUP
+          ✖ TUTUP
         </button>
 
         <button
