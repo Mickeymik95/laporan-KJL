@@ -176,8 +176,7 @@ const adaMangsa =
 
 const butirMangsa = adaMangsa
   ? `
-*BUTIR-BUTIR MANGSA :*
-
+*BUTIR-BUTIR MANGSA :-*
 NAMA : ${namaMangsa || "-"}
 NO. KP : ${noKP || "-"}
 TARIKH LAHIR : ${tarikhLahir || "-"}
@@ -196,10 +195,9 @@ POSITION : ${position || ""}
 SECTION : ${section || ""}
 TARIKH : ${tarikh || ""}
 
-*TAJUK : ${tajuk || ""}*
+*${tajuk || ""}*
 
 *ULASAN :-*
-
 ${ulasan || ""}
 
 ${butirMangsa}`;
