@@ -261,7 +261,7 @@ ${butirMangsa?.trim() || "NIL"}
 * ${sebabKejadian || "NIL"}
 
 *10. KRONOLOGI RINGKASAN KEJADIAN :*
-${kronologi || "NIL"}
+* ${kronologi || "NIL"}
 
 *TINDAKAN :*
 ${tindakanList || "NIL"}`.toUpperCase();
