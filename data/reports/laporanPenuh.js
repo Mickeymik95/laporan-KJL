@@ -139,7 +139,7 @@ placeholder: "Cth : KEHILANGAN AKSESORI KERETA DEKAT PARKING STN PARAMOUNT",
   name: "kronologi",
   label: "KRONOLOGI RINGKASAN KEJADIAN",
   type: "textarea",
-  rows: 10,
+  rows: 13,
   placeholder: "MASUKKAN KRONOLOGI KEJADIAN...",
   },
 
@@ -229,7 +229,7 @@ placeholder: "Cth : KEHILANGAN AKSESORI KERETA DEKAT PARKING STN PARAMOUNT",
 
   return `🚩🚩🚩
 
-*ASSALAMUALAIKUM SALAM SEJAHTERA TUAN/PUAN*
+*ASSALAMUALAIKUM SALAM SEJAHTERA TUAN/PUAN,*
 
 *${tajuk || ""}*
 
