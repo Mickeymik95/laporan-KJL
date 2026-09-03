@@ -21,19 +21,16 @@ export const kontraktorAm = {
       name: "kerja",
       label: "KERJA-KERJA YANG DIJALANKAN",
       type: "textarea",
-      rows: 8,
+      rows: 6,
       placeholder: "CTH : MEMBAIKI PINTU BILIK CSO",
     },
 
     {
       name: "statusPas",
       label: "STATUS PAS KONTRAKTOR",
-      type: "radio",
-      options: [
-        "Diberikan pas kontraktor sementara sehingga kerja-kerja baik pulih siap sepenuhnya.",
-        "Mempunyai pas kontraktor yang sah",
-        "Sebilangan kontraktor diberikan pas kontraktor sementara",
-      ],
+      type: "textarea",
+      placeholder: "cth : SEMUA KONTRAKTOR MEMPUNYAI PAS KERJA / 03 KONTRAKTOR DIBERIKAN PAS SEMENTARA SEHINGGA SELESAI",
+      rows: 4,
     },
 
     {
