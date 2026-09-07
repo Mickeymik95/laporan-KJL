@@ -1,6 +1,6 @@
 export const mc = {
   id: "mc",
-  name: "LAPORAN MC",
+  name: "MC",
 
   fields: [
     {

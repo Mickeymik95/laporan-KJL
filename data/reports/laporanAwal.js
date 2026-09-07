@@ -1,6 +1,6 @@
 export const laporanAwal = {
 id: "laporanAwal",
-name: "LAPORAN KEJADIAN SEMASA",
+name: "KEJADIAN SEMASA",
 
 fields: [
 {
