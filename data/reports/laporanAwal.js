@@ -46,7 +46,7 @@ export const laporanAwal = {
     },
   ],
 
-  build({
+ build({
     station,
     tarikh,
     masa,
@@ -58,6 +58,9 @@ export const laporanAwal = {
     tindakan2,
     anggota,
   }) {
+    // Fungsi bantuan supaya bulet hanya muncul jika ada teks dimasukkan
+    const bullet = (text) => text && text.trim() ? `* ${text}` : "";
+
     return `*Assalamualaikum & Salam Sejahtera Tuan,*
 
 TARIKH : ${tarikh}
@@ -67,12 +70,12 @@ LOKASI : STESEN *${station}* (KJL)
 *${jenisLaporan.toUpperCase() || ""}*
 
 *RINGKASAN  :-*
-${ringkasan1 || ""}
-${ringkasan2 || ""}
+${bullet(ringkasan1)}
+${bullet(ringkasan2)}
 
 *TINDAKAN :-*
-${tindakan1 || ""}
-${tindakan2 || ""}
+${bullet(tindakan1)}
+${bullet(tindakan2)}
 
 ANGGOTA BERTUGAS :
 *${anggota}*
