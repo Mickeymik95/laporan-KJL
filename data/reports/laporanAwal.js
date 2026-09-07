@@ -20,7 +20,7 @@ export const laporanAwal = {
       label: "Ringkasan Kejadian 1",
       type: "textarea",
       rows: 3,
-      placeholder:"cth : 01x (w)(m) warganegara Malaysia pitam di PF 1 \n 01x (L) warganegara Bangladesh turun ke Trek untuk mengambil telefon bimbit",
+      placeholder:"cth : 01x (w)(m) warganegara Malaysia pitam di PF 1",
     },
     {
       name: "ringkasan2",
