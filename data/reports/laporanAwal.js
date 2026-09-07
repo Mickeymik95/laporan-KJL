@@ -17,7 +17,7 @@ export const laporanAwal = {
     },
     {
       name: "ringkasan1",
-      label: "Ringkasan Kejadian",
+      label: "Ringkasan Kejadian 1",
       type: "textarea",
       rows: 3,
       placeholder:"cth : 01x (w)(m) warganegara Malaysia pitam di PF 1 \n 01x (L) warganegara Bangladesh turun ke Trek untuk mengambil telefon bimbit",
@@ -31,7 +31,7 @@ export const laporanAwal = {
     },
     {
       name: "tindakan1",
-      label: "Tindakan 1)",
+      label: "Tindakan 1",
       type: "textarea",
       rows: 3,
       placeholder:"cth : Memaklumkan kepada SCC & Penyelia bertugas",
@@ -41,7 +41,7 @@ export const laporanAwal = {
       name: "tindakan2",
       label: "Tindakan 2",
       type: "textarea",
-      rows: 2,
+      rows: 3,
       placeholder:"cth : Membawa mangsa/pengadu ke ER untuk bantuan awal @ Menahan pelaku dan mengambil butir-butir kejadian",
     },
   ],
