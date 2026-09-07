@@ -42,7 +42,7 @@ export const laporanAwal = {
       label: "Tindakan 2",
       type: "textarea",
       rows: 2,
-      placeholder:"cth : Membawa mangsa/pengadu ke ER untuk bantuan awal\n Menahan pelaku dan mengambil butir-butir kejadian",
+      placeholder:"cth : Membawa mangsa/pengadu ke ER untuk bantuan awal @ Menahan pelaku dan mengambil butir-butir kejadian",
     },
   ],
 
