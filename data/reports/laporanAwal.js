@@ -5,7 +5,7 @@ export const laporanAwal = {
   fields: [
     {
       name: "jenisLaporan",
-      label: "Jenis laporan",
+      label: "Tajuk Laporan",
       type: "input",
       placeholder:"Cth : Redmike / Peralatan stesen rosak / Kecurian Barang",
     },
