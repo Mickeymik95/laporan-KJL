@@ -27,10 +27,9 @@ export const kontraktorAm = {
 
     {
       name: "statusPas",
-      label: "STATUS PAS KONTRAKTOR",
-      type: "textarea",
-      placeholder: "cth : SEMUA KONTRAKTOR MEMPUNYAI PAS KERJA / 03 KONTRAKTOR DIBERIKAN PAS SEMENTARA SEHINGGA SELESAI",
-      rows: 4,
+      label: "PENGGUNAAN PAS SEMENTARA JIKA ADA",
+      type: "input",
+      placeholder: "Masukkan jumlah sahaja cth : 10 / 07 tanpa x",
     },
 
     {
@@ -42,17 +41,23 @@ export const kontraktorAm = {
   ],
 
   build({
-    anggota,
-    station,
-    tarikh,
-    masa,
-    bilanganKontraktor,
-    syarikat,
-    kerja,
-    statusPas,
-    staff,
-  }) {
-    return `*Assalamualaikum wbt & Salam Sejahtera YDH Tuan,*
+  anggota,
+  station,
+  tarikh,
+  masa,
+  bilanganKontraktor,
+  syarikat,
+  kerja,
+  statusPas,
+  staff,
+}) {
+
+  // STATUS PAS
+  const ayatPas = statusPas && statusPas.trim()
+    ? `*${statusPas.trim()}x Kontraktor diberikan pas sementara.*`
+    : ``;
+
+  return `*Assalamualaikum wbt & Salam Sejahtera YDH Tuan,*
 
 Laporan penugasan anggota bertugas Aliran Kelana Jaya Jabatan Sekuriti.
 
@@ -64,7 +69,7 @@ LOKASI : STESEN LRT *${station}* (KJL)
 1. Lapor kemasukan *${bilanganKontraktor}x* kontraktor *${syarikat || ""}.*
 2. Masuk membuat kerja-kerja *${kerja || ""}.*
 3. Kesemua kontraktor mempunyai work permit.
-4. ${statusPas || ""}.
+4. Mempunyai pas kerja yang sah. ${ayatPas}
 5. Kesemua kontraktor dipantau oleh staff bertugas *${staff?.toUpperCase() || ""}.*
 6. Lokasi baik dan dalam kawalan.
 
@@ -72,7 +77,7 @@ ANGGOTA BERTUGAS :
 *${anggota}*
 
 *#TERUSKAN PERKARA BAIK*`;
-  },
+},
 };
 
 export default kontraktorAm;
