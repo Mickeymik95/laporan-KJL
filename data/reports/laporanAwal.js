@@ -35,7 +35,7 @@ export const laporanAwal = {
       type: "textarea",
       rows: 3,
       placeholder:"cth : Memaklumkan kepada SCC & Penyelia bertugas",
-      defaultValue: "Memaklumkan kepada CSA, SCC & Penyelia bertugas",
+      defaultValue: "Memaklumkan kepada SCC & Penyelia bertugas",
     },
     {
       name: "tindakan2",
