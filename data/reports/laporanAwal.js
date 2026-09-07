@@ -67,12 +67,12 @@ LOKASI : STESEN *${station}* (KJL)
 *${jenisLaporan.toUpperCase() || ""}*
 
 *RINGKASAN  :-*
-* ${ringkasan1 || ""}
-* ${ringkasan2 || ""}
+${ringkasan1 || ""}
+${ringkasan2 || ""}
 
 *TINDAKAN :-*
-* ${tindakan1 || ""}
-* ${tindakan2 || ""}
+${tindakan1 || ""}
+${tindakan2 || ""}
 
 ANGGOTA BERTUGAS :
 *${anggota}*
