@@ -309,12 +309,10 @@ function handleEdit() {
         <select
           value={selectedZone}
           onChange={(e) => {
-            setSelectedZone(e.target.value);
-            setSelectedStation("");
-            setSelectedReport("");
-            setSavedData(null);
-            setEditOpen(false);
-          }}
+  setSelectedZone(e.target.value);
+  setSelectedStation("");
+  setEditOpen(false);
+}}
           className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3 text-sm font-bold text-white outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30"
         >
           <option value="">
@@ -337,11 +335,9 @@ function handleEdit() {
         <select
           value={selectedStation}
           onChange={(e) => {
-            setSelectedStation(e.target.value);
-            setSelectedReport("");
-            setSavedData(null);
-            setEditOpen(false);
-          }}
+  setSelectedStation(e.target.value);
+  setEditOpen(false);
+}}
           disabled={!selectedZone}
           className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3 text-sm font-bold text-white outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30 disabled:cursor-not-allowed disabled:opacity-40"
         >
