@@ -17,29 +17,29 @@ export const laporanAwal = {
     },
     {
       name: "ringkasan1",
-      label: "Ringkasan Kejadian (Tak perlu letak .noktah)",
+      label: "Ringkasan Kejadian",
       type: "textarea",
       rows: 3,
       placeholder:"cth : 01x (w)(m) warganegara Malaysia pitam di PF 1 \n 01x (L) warganegara Bangladesh turun ke Trek untuk mengambil telefon bimbit",
     },
     {
       name: "ringkasan2",
-      label: "Ringkasan Kejadian 2 (Tak perlu letak .noktah)",
+      label: "Ringkasan Kejadian 2",
       type: "textarea",
       rows: 3,
       placeholder:"cth : Meminta untuk berehat dan sarapan sebentar",
     },
     {
       name: "tindakan1",
-      label: "Tindakan 1 (Tak perlu letak .noktah)",
+      label: "Tindakan 1)",
       type: "textarea",
-      rows: 2,
+      rows: 3,
       placeholder:"cth : Memaklumkan kepada SCC & Penyelia bertugas",
       defaultValue: "Memaklumkan kepada CSA, SCC & Penyelia bertugas",
     },
     {
       name: "tindakan2",
-      label: "Tindakan 2 (Tak perlu letak .noktah)",
+      label: "Tindakan 2",
       type: "textarea",
       rows: 2,
       placeholder:"cth : Membawa mangsa/pengadu ke ER untuk bantuan awal\n Menahan pelaku dan mengambil butir-butir kejadian",
@@ -67,12 +67,12 @@ LOKASI : STESEN *${station}* (KJL)
 *${jenisLaporan.toUpperCase() || ""}*
 
 *RINGKASAN  :-*
-* ${ringkasan1 || ""}.
-* ${ringkasan2 || ""}.
+* ${ringkasan1 || ""}
+* ${ringkasan2 || ""}
 
 *TINDAKAN :-*
-* ${tindakan1 || ""}.
-* ${tindakan2 || ""}.
+* ${tindakan1 || ""}
+* ${tindakan2 || ""}
 
 ANGGOTA BERTUGAS :
 *${anggota}*
