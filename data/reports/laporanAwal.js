@@ -1,87 +1,87 @@
 export const laporanAwal = {
-  id: "laporanAwal",
-  name: "LAPORAN KEJADIAN SEMASA",
+id: "laporanAwal",
+name: "LAPORAN KEJADIAN SEMASA",
 
-  fields: [
-    {
-      name: "jenisLaporan",
-      label: "Tajuk Laporan",
-      type: "input",
-      placeholder:"Cth : Redmike / Peralatan stesen rosak / Kecurian Barang",
-    },
-    {
-      name: "masaKejadian",
-      label: "Anggaran waktu kejadian",
-      type: "text",
-      placeholder:"cth : 1543 / 1024 (Tak perlu letak Hrs/HRS",
-    },
-    {
-      name: "ringkasan1",
-      label: "Ringkasan Kejadian 1",
-      type: "textarea",
-      rows: 3,
-      placeholder:"cth : 01x (w)(m) warganegara Malaysia pitam di PF 1",
-    },
-    {
-      name: "ringkasan2",
-      label: "Ringkasan Kejadian 2",
-      type: "textarea",
-      rows: 3,
-      placeholder:"cth : Meminta untuk berehat dan sarapan sebentar",
-    },
-    {
-      name: "tindakan1",
-      label: "Tindakan 1",
-      type: "textarea",
-      rows: 3,
-      placeholder:"cth : Memaklumkan kepada SCC & Penyelia bertugas",
-      defaultValue: "Memaklumkan kepada SCC & Penyelia bertugas",
-    },
-    {
-      name: "tindakan2",
-      label: "Tindakan 2",
-      type: "textarea",
-      rows: 3,
-      placeholder:"cth : Membawa mangsa/pengadu ke ER untuk bantuan awal @ Menahan pelaku dan mengambil butir-butir kejadian",
-    },
-  ],
+fields: [
+{
+name: "jenisLaporan",
+label: "TAJUK LAPORAN",
+type: "input",
+placeholder:
+"Cth : Redmike / Peralatan stesen rosak / Kecurian Barang",
+},
+{
+  name: "masaKejadian",
+  label: "ANGGARAN WAKTU KEJADIAN",
+  type: "text",
+  placeholder: "Cth : 1543 / 1024 (Tak perlu letak HRS)",
+},
+{
+  name: "ringkasan",
+  label: "RINGKASAN",
+  type: "textarea",
+  rows: 5,
+  placeholder:
+    "Setiap Enter akan menjadi satu point baru\nCth : Mangsa pitam di Platform 1\nCSA memberikan bantuan awal",
+},
 
- build({
-    station,
-    tarikh,
-    masa,
-    masaKejadian,
-    jenisLaporan,
-    ringkasan1,
-    ringkasan2,
-    tindakan1,
-    tindakan2,
-    anggota,
-  }) {
-    // Fungsi bantuan supaya bulet hanya muncul jika ada teks dimasukkan
-    const bullet = (text) => text && text.trim() ? `* ${text}` : "";
+{
+  name: "tindakan",
+  label: "TINDAKAN",
+  type: "textarea",
+  rows: 5,
+  placeholder:
+    "Setiap Enter akan menjadi satu poin baru\nCth : Memaklumkan kepada SCC\nMemaklumkan kepada Penyelia bertugas",
+  defaultValue: "Memaklumkan kepada SCC & Penyelia bertugas",
+},
 
-    return `*Assalamualaikum & Salam Sejahtera Tuan,*
+],
+
+build({
+station,
+tarikh,
+masa,
+masaKejadian,
+jenisLaporan,
+ringkasan,
+tindakan,
+anggota,
+}) {
+// =====================================
+// AUTO BULLET SETIAP KALI ENTER
+// =====================================
+
+const autoBullet = (text) => {
+  if (!text || !text.trim()) return "";
+
+  return text
+    .split("\n")
+    .map((item) => item.trim())
+    .filter((item) => item !== "")
+    .map((item) => `* ${item}`)
+    .join("\n");
+};
+
+
+return `*Assalamualaikum & Salam Sejahtera Tuan,*
 
 TARIKH : ${tarikh}
 MASA : ${masa}
 LOKASI : STESEN *${station}* (KJL)
 
-*${jenisLaporan.toUpperCase() || ""}*
+*${(jenisLaporan || "").toUpperCase()}*
 
-*RINGKASAN  :-*
-${bullet(ringkasan1)|| ""}
-${bullet(ringkasan2)|| ""}
+*RINGKASAN :-*
+${autoBullet(ringkasan)}
 
 *TINDAKAN :-*
-${bullet(tindakan1)|| ""}
-${bullet(tindakan2)|| ""}
+${autoBullet(tindakan)}
 
 ANGGOTA BERTUGAS :
 *${anggota}*
 
 *#TERUSKAN PERKARA BAIK*`;
-  },
+},
 };
 
 export default laporanAwal;
