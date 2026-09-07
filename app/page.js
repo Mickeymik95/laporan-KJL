@@ -284,7 +284,7 @@ function handleEdit() {
   <div >
 
     <label className="mb-2 block text-xs font-black tracking-wide text-blue-300">
-    JAWATAN & NAMA
+    PANGKAT & NAMA
     </label>
 
     <div className="relative">
