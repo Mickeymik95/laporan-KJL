@@ -1,6 +1,6 @@
 export const laporanAwal = {
   id: "laporanAwal",
-  name: "LAPORAN AWAL KEJADIAN",
+  name: "LAPORAN KEJADIAN SEMASA",
 
   fields: [
     {
@@ -16,11 +16,18 @@ export const laporanAwal = {
       placeholder:"cth : 1543 / 1024 (Tak perlu letak Hrs/HRS",
     },
     {
-      name: "ringkasanKejadian",
+      name: "ringkasan1",
       label: "Ringkasan Kejadian (Tak perlu letak .noktah)",
       type: "textarea",
       rows: 5,
       placeholder:"cth : 01x (w)(m) warganegara Malaysia pitam di PF 1 \n 01x (L) warganegara Bangladesh turun ke Trek untuk mengambil telefon bimbit",
+    },
+    {
+      name: "ringkasan2",
+      label: "Ringkasan Kejadian 2 (Tak perlu letak .noktah)",
+      type: "textarea",
+      rows: 5,
+      placeholder:"cth : Meminta untuk berehat dan sarapan sebentar",
     },
     {
       name: "tindakan1",
@@ -45,7 +52,8 @@ export const laporanAwal = {
     masa,
     masaKejadian,
     jenisLaporan,
-    ringkasanKejadian,
+    ringkasan1,
+    ringkasan2,
     tindakan1,
     tindakan2,
     anggota,
@@ -56,17 +64,15 @@ TARIKH : ${tarikh}
 MASA : ${masa}
 LOKASI : STESEN *${station}* (KJL)
 
-*LAPORAN AWAL KEJADIAN ${jenisLaporan.toUpperCase() || ""}*
+*${jenisLaporan.toUpperCase() || ""}*
 
-Untuk makluman awal, Jam lebih kurang ${masaKejadian} Hrs, \
-telah berlaku kejadian *${jenisLaporan.toUpperCase() || ""}*. \
-${ringkasanKejadian || ""}.
+*RINGKASAN  :-*
+* ${ringkasan1 || ""}.
+* ${ringkasan2 || ""}.
 
 *TINDAKAN :-*
 * ${tindakan1 || ""}.
 * ${tindakan2 || ""}.
-
-Laporan penuh akan menyusul, sekian.
 
 ANGGOTA BERTUGAS :
 *${anggota}*
