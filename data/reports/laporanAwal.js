@@ -65,14 +65,14 @@ const autoBullet = (text) => {
 
 return `*Assalamualaikum & Salam Sejahtera Tuan,*
 
+*📢${(jenisLaporan || "").toUpperCase()}🚨*
+
 TARIKH : ${tarikh}
 MASA : ${masa}
 LOKASI : STESEN *${station}* (KJL)
 
-*${(jenisLaporan || "").toUpperCase()}*
-
 *RINGKASAN :-*
-${autoBullet(ringkasan)}
+${ringkasan || ""}
 
 *TINDAKAN :-*
 ${autoBullet(tindakan)}
