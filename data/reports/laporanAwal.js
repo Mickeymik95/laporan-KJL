@@ -53,6 +53,7 @@ MASA : ${masa}
 LOKASI : STESEN ${station} (KJL)
 
 *RINGKASAN :-*
+
 ${autoBullet(ringkasan)}
 
 ANGGOTA BERTUGAS :
