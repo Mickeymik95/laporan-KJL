@@ -1,6 +1,6 @@
 export const laporanPenuh = {
 id: "laporanPenuh",
-name: "LAPORAN PENUH",
+name: "LAPORAN PENUH REDMIKE",
 
 fields: [
 {
@@ -104,6 +104,21 @@ placeholder: "Cth : KEHILANGAN AKSESORI KERETA DEKAT PARKING STN PARAMOUNT",
 },
 
 {
+  name: "scc3",
+  label: "SCC BERTUGAS 3",
+  type: "select",
+  placeholder: "PILIH SCC",
+  options: [
+    "10000975 KPL PB ARMAN BIN ARIPIN",
+    "10000858 KPL PB ABDUL HAKIM BIN ABU BAKAR",
+    "10001130 KPL PB HALINA BINTI MOHD SALIM",
+    "10012979 KONST PB HAFFANDI BIN KUTIP",
+    "10017531 KONST PB MUHAMMAD ILHAM BIN NAZRI",
+"10017518 KONST PB MOHD HAMIZI MD CHOID",
+  ],
+},
+
+{
   name: "anggotaStesen",
   label: "ANGGOTA STESEN BERTUGAS",
   type: "input",
@@ -117,6 +132,18 @@ placeholder: "Cth : KEHILANGAN AKSESORI KERETA DEKAT PARKING STN PARAMOUNT",
   placeholder: "Cth : 10020218 HAKIMI/10020336 NAJAH",
 },
 
+{
+  name: "redState",
+  label: "RED STATE",
+  type: "input",
+  placeholder: "Cth : 1826 HRS",
+},
+{
+  name: "greenState",
+  label: "GREEN STATE",
+  type: "input",
+  placeholder: "Cth : 1826 HRS",
+},
 {
   name: "butirMangsa",
   label: "BUTIR-BUTIR MANGSA / PENGADU",
@@ -197,6 +224,8 @@ placeholder: "Cth : KEHILANGAN AKSESORI KERETA DEKAT PARKING STN PARAMOUNT",
   anggotaStesen,
   anggota,
   hoslerCSA,
+  redState,
+  greenState,
   butirMangsa,
   sebabKejadian,
   kronologi,
@@ -227,6 +256,7 @@ placeholder: "Cth : KEHILANGAN AKSESORI KERETA DEKAT PARKING STN PARAMOUNT",
   const sccList = [
   scc1,
   scc2,
+  scc3
   ]
   .filter((scc) => scc?.trim())
   .map((scc) => `* ${scc}`)
@@ -259,13 +289,19 @@ ${sccList || "* NIL"}
 *7. HOSLER/CSA BERTUGAS :*
 * ${hoslerCSA || "NIL"}
 
-*8. BUTIR-BUTIR MANGSA/PENGADU :*
+*8. RED STATE :*
+* ${redaState || "NIL"}
+
+*9. GREEN STATE :*
+* ${greenState || "NIL"}
+
+*10. BUTIR-BUTIR MANGSA/PENGADU :*
 ${butirMangsa?.trim() || "NIL"}
 
-*9. SEBAB KEJADIAN :*
+*11. SEBAB KEJADIAN :*
 * ${sebabKejadian || "NIL"}
 
-*10. KRONOLOGI RINGKASAN KEJADIAN :*
+*12. KRONOLOGI RINGKASAN KEJADIAN :*
 * ${kronologi || "NIL"}
 
 *TINDAKAN :*
