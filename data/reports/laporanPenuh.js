@@ -221,6 +221,7 @@ placeholder: "Cth : KEHILANGAN AKSESORI KERETA DEKAT PARKING STN PARAMOUNT",
   penyelia3,
   scc1,
   scc2,
+  scc3,
   anggotaStesen,
   anggota,
   hoslerCSA,
@@ -256,7 +257,7 @@ placeholder: "Cth : KEHILANGAN AKSESORI KERETA DEKAT PARKING STN PARAMOUNT",
   const sccList = [
   scc1,
   scc2,
-  scc3
+  scc3,
   ]
   .filter((scc) => scc?.trim())
   .map((scc) => `* ${scc}`)
