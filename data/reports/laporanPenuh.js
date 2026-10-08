@@ -290,7 +290,7 @@ ${sccList || "* NIL"}
 * ${hoslerCSA || "NIL"}
 
 *8. RED STATE :*
-* ${redaState || "NIL"}
+* ${redState || "NIL"}
 
 *9. GREEN STATE :*
 * ${greenState || "NIL"}
