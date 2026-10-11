@@ -6,6 +6,12 @@ export const oku = {
 
   fields: [
     {
+      name: "bilanganOku",
+      label: "BILANGAN OKU",
+      type: "input",
+      placeholder: "01x / 02x / 10x",
+    },
+    {
       name: "stesenTujuan",
       label: "STESEN TUJUAN",
       type: "input",
@@ -39,6 +45,7 @@ export const oku = {
 
   build({
     station,
+    bilanganOku,
     stesenTujuan,
     platform,
     trenId,
@@ -47,7 +54,7 @@ export const oku = {
     const stationShortName =
       stationShortNames[station] || station;
 
-    return `*◇ OKU - ${stationShortName} ➡️ ${stesenTujuan}*
+    return `*◇{bilanganOku} OKU - ${stationShortName} ➡️ ${stesenTujuan}*
 *◇ ${platform}*
 *◇ Tren Id ${trenId} - Door ${door}*`;
   },
