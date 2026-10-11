@@ -54,7 +54,7 @@ export const oku = {
     const stationShortName =
       stationShortNames[station] || station;
 
-    return `*◇{bilanganOku} OKU - ${stationShortName} ➡️ ${stesenTujuan}*
+    return `*◇${bilanganOku} OKU - ${stationShortName} ➡️ ${stesenTujuan}*
 *◇ ${platform}*
 *◇ Tren Id ${trenId} - Door ${door}*`;
   },
