@@ -97,7 +97,9 @@ export const mc = {
     noTelKlinik,
     ulasanPenyelia,
   }) {
-    return `*ASSALAMUALAIKUM , TUAN/PUAN,*
+    return `*ASSALAMUALAIKUM , TUAN,*
+
+*LAPORAN MC (MEDICAL LEAVE)*
 
 *ALIRAN :* KJL ZON 3
 *SHIFT :* ${shift || ""}
