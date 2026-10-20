@@ -57,26 +57,31 @@ export const kontraktorAm = {
     ? `*${statusPas.trim()}x Kontraktor diberikan pas sementara.*`
     : ``;
 
-  return `*Assalamualaikum wbt & Salam Sejahtera YDH Tuan,*
+  return `Assalamualaikum w.b.t & Salam Sejahtera YDH Tuan,
 
-Laporan penugasan anggota bertugas Aliran Kelana Jaya Jabatan Sekuriti.
+LAPORAN PENUGASAN ANGGOTA BERTUGAS ALIRAN KELANA JAYA JABATAN SEKURITI
 
-TARIKH : ${tarikh}
-MASA : ${masa}
-TUGASAN : PEMERIKSAAN KEMASUKAN KONTRAKTOR
-LOKASI : STESEN LRT *${station}* (KJL)
+TARIKH: ${tarikh}
+MASA: ${masa} HRS
+TUGASAN: PEMERIKSAAN KEMASUKAN KONTRAKTOR
+LOKASI: STESEN LRT ${station} (KJL)
 
-1. Lapor kemasukan *${bilanganKontraktor}x* kontraktor *${syarikat || ""}.*
-2. Masuk membuat kerja-kerja *${kerja || ""}.*
-3. Kesemua kontraktor mempunyai work permit.
-4. Mempunyai pas kerja yang sah. ${ayatPas}
-5. Kesemua kontraktor dipantau oleh staff bertugas *${staff?.toUpperCase() || ""}.*
-6. Lokasi baik dan dalam kawalan.
+1. Melaporkan kemasukan seramai x${bilanganKontraktor} orang kontraktor dari syarikat ${syarikat || ""}.
 
-ANGGOTA BERTUGAS :
-*${anggota}*
+2. Tujuan kerja-kerja ${kerja || ""}.
 
-*#TERUSKAN PERKARA BAIK*`;
+3. ${ayatPas}
+
+4. Kesemua kontraktor dipantau oleh PIC bertugas, ${staff?.toUpperCase() || ""}.
+
+5. Keadaan lokasi baik dan terkawal.
+
+Sekian, terima kasih.
+
+Anggota Bertugas:
+${anggota}
+
+#TERUSKAN PERKARA BAIK`;
 },
 };
 
