@@ -17,12 +17,27 @@ export const kontraktorAm = {
       placeholder: "CTH : MIK TECH SDN BHD",
     },
 
+{
+      name: "permit",
+      label: "PERMIT KERJA",
+      type: "text",
+      placeholder: "CTH : WP-222-2026",
+    },
+
     {
       name: "kerja",
       label: "KERJA-KERJA YANG DIJALANKAN",
       type: "textarea",
       rows: 6,
       placeholder: "CTH : MEMBAIKI PINTU BILIK CSO",
+    },
+
+{
+      name: "kawasan",
+      label: "KAWASAN KERJA DIJALANKAN",
+      type: "textarea",
+      rows: 3,
+      placeholder: "CTH : TANDAS / PF / BILIK CSO",
     },
 
     {
@@ -47,7 +62,9 @@ export const kontraktorAm = {
   masa,
   bilanganKontraktor,
   syarikat,
+  permit,
   kerja,
+  kawasan,
   statusPas,
   staff,
 }) {
@@ -66,9 +83,9 @@ MASA: ${masa} HRS
 TUGASAN: PEMERIKSAAN KEMASUKAN KONTRAKTOR
 LOKASI: STESEN LRT ${station} (KJL)
 
-1. Melaporkan kemasukan seramai x${bilanganKontraktor} orang kontraktor dari syarikat ${syarikat || ""}.
+1. Melaporkan kemasukan seramai x${bilanganKontraktor} orang kontraktor dari syarikat ${syarikat || ""}. work permit (${permit || ""}.)
 
-2. Tujuan kerja-kerja ${kerja || ""}.
+2. Tujuan kerja-kerja ${kerja || ""} di ${kawasan || ""}.
 
 3. ${ayatPas}
 
