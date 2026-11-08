@@ -271,6 +271,13 @@ function handleEdit() {
 
   </div>
 
+ <div className="mt-2 flex items-center justify-center gap-2">
+  <img
+  src="https://i.postimg.cc/QtR82YSZ/IMG-20260921-183734.jpg"
+  alt="Gambar"
+  className="w-20 h-20 rounded-2xl object-contain"
+/>
+  </div>
 
 </div>
 
